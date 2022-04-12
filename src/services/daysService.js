@@ -35,4 +35,23 @@ export const getOneDay = (day_id) => {
     }    
   })
   .then(res => res.json())
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+// /:day_id/jerbs
+export const createJob = (day_id, formData) => {
+  return fetch(`${BASE_URL}${day_id}/jerbs`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(res => res.json())
+  .catch(error => {
+    console.log(error)
+  })
 }
