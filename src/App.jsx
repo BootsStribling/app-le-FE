@@ -1,13 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
+
+// -------- Services
 import * as authService from './services/authService'
+import * as daysService from './services/daysService'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [days, setDays] = useState()
+
+  useEffect(()=> {
+    daysService.getAllDays()
+    .then(res => setDays(res))
+  }, [])
+
   const navigate = useNavigate()
   console.log(user)
 
