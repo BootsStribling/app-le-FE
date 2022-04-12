@@ -41,8 +41,8 @@ export const getOneDay = (day_id) => {
 }
 
 // /:day_id/jerbs
-export const createJob = (day_id, formData) => {
-  return fetch(`${BASE_URL}${day_id}/jerbs`, {
+export const createJob = (formData) => {
+  return fetch(`${BASE_URL}${formData.day_id}/jerbs`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,
