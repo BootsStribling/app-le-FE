@@ -6,12 +6,12 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import DayList from './components/DayList/DayList'
-import DayDetails from './pages/DayDetails/DayDetails'
 
 
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
+import DayDetails from './pages/DayDetails/DayDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -40,7 +40,9 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         {/* For now routing to the first day in the index. */}
-        <Route path="/" element={<DayDetails user={user} day={days[0]} />} />
+        {/*  */}
+        <Route path="/" element={<DayList user={user} days={days} />} />
+        <Route path="/days/:id" element={<DayDetails user={user} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}

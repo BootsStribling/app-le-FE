@@ -27,3 +27,12 @@ export const getAllDays = () => {
     console.log(error)
   })
 }
+
+export const getOneDay = (day_id) => {
+  return fetch(`${BASE_URL}${day_id}`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }    
+  })
+  .then(res => res.json())
+}
