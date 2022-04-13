@@ -1,3 +1,4 @@
+import * as styles from './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import date from 'date-and-time';
@@ -94,23 +95,31 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
-      <Routes>
-        {/* For now routing to the first day in the index. */}
-        <Route path="/" element={<Landing user={user} days={days} />} />
-        {/* Show a day */}
-        <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} />
-        {/* Create a new job */}
-        <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
-        <Route
-          path="/signup"
-          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-        <Route
-          path="/login"
-          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-        />
-      </Routes>
+        <div className='phone-overlay'>
+          
+            <div className='app-area'>
+              <NavBar user={user} handleLogout={handleLogout} />
+              <Routes>
+                {/* For now routing to the first day in the index. */}
+                <Route path="/" element={<Landing user={user} days={days} />} />
+                {/* Show a day */}
+                <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} />
+                {/* Create a new job */}
+                <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
+                <Route
+                  path="/signup"
+                  element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+                  />
+                <Route
+                  path="/login"
+                  element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+                  />
+              </Routes>
+            </div>
+        </div>
+        <div className='background'>
+          <div className='btm-nav'></div>
+        </div>
     </>
   )
 }
