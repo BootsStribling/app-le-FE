@@ -17,7 +17,6 @@ import Login from './pages/Login/Login'
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
-import DayDetails from './pages/DayDetails/DayDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
