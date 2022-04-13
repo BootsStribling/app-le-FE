@@ -23,54 +23,17 @@ const App = () => {
   const [days, setDays] = useState([])
   const [currentDay, setCurrentDay] = useState([])
 
-  const createMissingDays = ()=> {
-    // on login we are determing what day it currently is with date constructor
-    let now = new Date()
-    let strNow = now.toString()
-    let formattedNow = strNow.substring(4,15)
-    setCurrentDay(formattedNow)
-    //then we are determining what was the last day that was created
-    let lastDay = days[days.length-1]?.date
-    if (lastDay){
-      let formattedLastDay = lastDay.substring(4,15)
-      let desiredFormat = 'MMM DD YYYY'
-      // Get the last login date and current date
-      let parseLastDay = date.parse(formattedLastDay, desiredFormat)
-      // we are subtracting current day from last day created
-      let numOfMissingDays = Math.floor(date.subtract(now, parseLastDay).toDays())
-      console.log(numOfMissingDays)
-      //pushing a date for number of missing days
-      let datesToAdd = []
-      for(let i = 0; i < numOfMissingDays; i++) {
-        let missingDay = date.addDays(now, (i * -1))
-        datesToAdd.push(missingDay)
-      }
-      console.log(datesToAdd);
-      //each date in missing days send date to create day services function
-      datesToAdd.reverse().forEach(date => {
-        console.log(date.toString(), 'date as a string')
-        let datePayload = date.toString()
-        let jsonDate = {'date': datePayload}
-        console.log(jsonDate, 'JSON datePayload')
-        daysService.createDay(jsonDate)
-      })
-
-    }
-}
-
   useEffect(()=> {
     if(user){
       daysService.getAllDays()
       .then(res => {
-          setDays(res)
-          createMissingDays()
-          console.log(currentDay, 'this is states currentDay after set')
-        })
+        console.log('RECIEVED', res)
+        setDays(res)
+      })
     }
-  }, [currentDay, user])
+  }, [user])
   
-
-
+  
   const navigate = useNavigate()
 
   const handleLogout = () => {
