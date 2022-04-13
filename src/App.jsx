@@ -32,7 +32,7 @@ const App = () => {
       })
     }
   }, [user])
-  
+
   
   const navigate = useNavigate()
 
@@ -50,6 +50,15 @@ const App = () => {
     .then(updatedDay => setCurrentDay(updatedDay))
   }
 
+  const createDay = () => {
+    let day = new Date().toString()
+    daysService.createDay({"date": day })
+    .then(res => {
+      setDays([...days, res])
+      setCurrentDay(res)
+    })
+  }
+
   // Update day
   const updateDay = (formData) => {
     daysService.editDay(formData)
@@ -61,9 +70,10 @@ const App = () => {
         <div className='phone-overlay'>
             <div className='app-area'>
               <NavBar user={user} handleLogout={handleLogout} />
+
               <Routes>
                 {/* For now routing to the first day in the index. */}
-                <Route path="/" element={<Landing user={user} days={days} />} />
+                <Route path="/" element={<Landing createDay={createDay} user={user} days={days} />} />
                 {/* Show a day */}
                 <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} />
                 {/* Create a new job */}

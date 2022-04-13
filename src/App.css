@@ -54,6 +54,12 @@
     display: inline;
     margin: 10px;
   }
+  .daysq {
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    display: inline-block;
+  }
 }
 /** MOBILE STYLING - screens smaller than 414px */
 @media screen and (max-width: 414px) {
