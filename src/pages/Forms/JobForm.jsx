@@ -9,13 +9,13 @@ const JobForm = (props) => {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const redirectToDay = () => navigate(`/days/${id}`)
+  const backtoLanding = () => navigate(`/`)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     form["day_id"] = id
     props.addJerb(form)
-    redirectToDay()
+    backtoLanding()
   }
 
 
@@ -31,7 +31,7 @@ const JobForm = (props) => {
           <button type="submit">Submit</button>
         </form>
       </section>
-      <button onClick={redirectToDay}>Back</button>
+      <button onClick={backtoLanding}>Back</button>
     </>
   );
 }
