@@ -3,19 +3,22 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
+import DayList from './components/DayList/DayList'
+
+// ------ Pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
-import DayList from './components/DayList/DayList'
-import DayDetails from './pages/DayDetails/DayDetails'
-
+import JobForm from './pages/Forms/JobForm'
 
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
+import DayDetails from './pages/DayDetails/DayDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [days, setDays] = useState([])
+  const [currentDay, setCurrentDay] = useState({})
 
   useEffect(()=> {
     daysService.getAllDays()
@@ -23,7 +26,6 @@ const App = () => {
   }, [])
 
   const navigate = useNavigate()
-  console.log(user)
 
   const handleLogout = () => {
     authService.logout()
@@ -35,12 +37,24 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  // Add a new jerb
+  const addJerb = (formData) => {
+    daysService.createJob(formData)
+    .then(updatedDay => {
+      // Update the current day
+      setCurrentDay(updatedDay)
+    })
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        {/* For now routing to the first day in the index. */}
-        <Route path="/" element={<DayDetails user={user} day={days[0]} />} />
+        <Route path="/" element={<DayList user={user} days={days} />} />
+        {/* Show a day */}
+        <Route path="/days/:id" element={<DayDetails user={user} />} />
+        {/* Create a new job */}
+        <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
