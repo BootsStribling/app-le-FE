@@ -16,11 +16,22 @@ const DayDetails = (props) => {
 
   // toggle editing state depending on the button clicked
   const handleEditClick = (state) => setEditing(state)
+  
+  // Update the day in state
+  const updateDay = (formData) => {
+    for(let key in formData) {
+      setDay({...day, [key]: formData[key]})
+    }
+    formData["day_id"] = id
+    handleEditClick(null)
+    // This will update the day in app. Same name kinda confusing
+    props.updateDay(formData)
+  }
 
   // get the day into state
   useEffect(()=> {
     getOneDay(id)
-    .then(res => setDay(res))
+    .then(res => setDay(res.day))
   }, [id])
 
   // Nav to forms
@@ -32,20 +43,27 @@ const DayDetails = (props) => {
 
   return (
     <div>
-      {/* Why day.day?! 😭😭 */}
       {/* created_at will need to be repalced with date */}
-      <p>{day.day.created_at}</p>
-      <p>{day.day.stand_up}</p>
+      <p>{day.created_at}</p>
+      <p>{day.stand_up}</p>
       {editing === 'stand_up'
-        ? <StandupForm handleEditClick={handleEditClick} />
+        ? <StandupForm 
+            name= {"stand_up"} 
+            updateDay={updateDay} 
+            initialValue={day.stand_up} 
+          />
         : <button onClick={()=> handleEditClick('stand_up')}>Edit stand up</button>
       }
-      <p>{day.day.stand_down}</p>
+      <p>{day.stand_down}</p>
       {editing === 'stand_down'
-        ? <StandupForm handleEditClick={handleEditClick} />
+        ? <StandupForm 
+            name={"stand_down"} 
+            updateDay={updateDay} 
+            initialValue={day.stand_down} 
+          />
         : <button onClick={()=> handleEditClick('stand_down')}>Edit stand down</button>
       }
-      <p>Job #s:{day.day.jerbs?.length}</p>
+      <p>Job #s:{day.jerbs?.length}</p>
       <button onClick={navToJobForm}>APPly yoself</button>
     </div>
   );
