@@ -1,6 +1,6 @@
-import * as styles from './App.css'
+import './App.css'
 import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
@@ -15,6 +15,8 @@ import Login from './pages/Login/Login'
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
+import StanddownForm from './pages/Forms/StanddownForm'
+import StandupForm from './pages/Forms/StandupForm'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -25,7 +27,6 @@ const App = () => {
     if(user){
       daysService.getAllDays()
       .then(res => {
-        console.log('RECIEVED', res)
         setDays(res)
       })
     }
@@ -49,6 +50,18 @@ const App = () => {
   // Add a new jerb
   const addJerb = (formData) => {
     daysService.createJob(formData)
+    .then(updatedDay => setCurrentDay(updatedDay))
+  }
+
+  const addStandUp = (formData) => {
+    console.log(formData)
+    daysService.editDay(formData)
+    .then(updatedDay => setCurrentDay(updatedDay))
+  }
+
+  const addStandDown = (formData) => {
+    console.log(formData)
+    daysService.editDay(formData)
     .then(updatedDay => setCurrentDay(updatedDay))
   }
 
@@ -83,6 +96,8 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
                 <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
+                <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
+                <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
                 <Route
                   path="/signup"
                   element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
