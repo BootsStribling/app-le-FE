@@ -4,7 +4,6 @@ import date from 'date-and-time';
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
-import DayList from './components/DayList/DayList'
 
 // ------- Pages
 import DayDetails from './pages/DayDetails/DayDetails'
@@ -130,17 +129,18 @@ const App = () => {
     navigate('/')
   }
 
-  const handleSignupOrLogin = () => {
-    setUser(authService.getUser())
-  }
+  const handleSignupOrLogin = () => setUser(authService.getUser())
 
   // Add a new jerb
   const addJerb = (formData) => {
     daysService.createJob(formData)
-    .then(updatedDay => {
-      // Update the current day
-      setCurrentDay(updatedDay)
-    })
+    .then(updatedDay => setCurrentDay(updatedDay))
+  }
+
+  // Update day
+  const updateDay = (formData) => {
+    daysService.editDay(formData)
+    .then(updatedDay => setCurrentDay(updatedDay))
   }
 
   return (
@@ -148,9 +148,9 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         {/* For now routing to the first day in the index. */}
-        <Route path="/" element={<Landing user={user}/>} />
+        <Route path="/" element={<Landing user={user} days={days} />} />
         {/* Show a day */}
-        <Route path="/days/:id" element={<DayDetails user={user} />} />
+        <Route path="/days/:id" element={<DayDetails updateDay={updateDay} user={user} />} />
         {/* Create a new job */}
         <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
         <Route

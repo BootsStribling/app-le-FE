@@ -4,16 +4,34 @@ import { useParams, useNavigate } from 'react-router-dom'
 // ------ services
 import { getOneDay } from '../../services/daysService';
 
+// ------ Components
+import StandupForm from './Components/StandupForm';
+
 // The purpose of this function is to show the details of a single day.
 // (This is Landing in our wireframe)
 const DayDetails = (props) => {
   const { id } = useParams() // Include this once links are setup. For development id will be hard coded
   const [day, setDay] =useState(null)
+  const [editing, setEditing] = useState(null)
+
+  // toggle editing state depending on the button clicked
+  const handleEditClick = (state) => setEditing(state)
+  
+  // Update the day in state
+  const updateDay = (formData) => {
+    for(let key in formData) {
+      setDay({...day, [key]: formData[key]})
+    }
+    formData["day_id"] = id
+    handleEditClick(null)
+    // This will update the day in app. Same name kinda confusing
+    props.updateDay(formData)
+  }
 
   // get the day into state
   useEffect(()=> {
     getOneDay(id)
-    .then(res => setDay(res))
+    .then(res => setDay(res.day))
   }, [id])
 
   // Nav to forms
@@ -25,11 +43,33 @@ const DayDetails = (props) => {
 
   return (
     <div>
-      {/* Why day.day?! 😭😭 */}
-      <p>{day.day.created_at}</p> 
-      <p>{day.day.stand_up}</p>
-      <p>{day.day.stand_down}</p>
-      <p>Job #s:{day.day.jerbs?.length}</p>
+      {/* created_at will need to be repalced with date */}
+      <p>{day.created_at}</p>
+      {editing === 'stand_up'
+        ? <StandupForm 
+            name= {"stand_up"} 
+            updateDay={updateDay} 
+            initialValue={day.stand_up} 
+            handleEditClick={handleEditClick}
+          />
+        : <>        
+            <p>{day.stand_up}</p>
+            <button onClick={()=> handleEditClick('stand_up')}>Edit stand up</button>
+          </>
+      }
+      {editing === 'stand_down'
+        ? <StandupForm 
+            name={"stand_down"} 
+            updateDay={updateDay} 
+            initialValue={day.stand_down}
+            handleEditClick={handleEditClick}
+          />
+        : <>
+            <p>{day.stand_down}</p>
+            <button onClick={()=> handleEditClick('stand_down')}>Edit stand down</button>
+          </>
+      }
+      <p>Job #s:{day.jerbs?.length}</p>
       <button onClick={navToJobForm}>APPly yoself</button>
     </div>
   );

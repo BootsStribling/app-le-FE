@@ -7,16 +7,17 @@ const JobForm = (props) => {
   const navigate = useNavigate()
   const [form, setForm] = useState({})
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+
+  const redirectToDay = () => navigate(`/days/${id}`)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(id)
     form["day_id"] = id
     props.addJerb(form)
+    redirectToDay()
   }
+
 
   return (
     <>
@@ -30,6 +31,7 @@ const JobForm = (props) => {
           <button type="submit">Submit</button>
         </form>
       </section>
+      <button onClick={redirectToDay}>Back</button>
     </>
   );
 }

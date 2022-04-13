@@ -37,10 +37,25 @@ export const getOneDay = (day_id) => {
   })
 }
 
-// /:day_id/jerbs
 export const createJob = (formData) => {
   return fetch(`${BASE_URL}${formData.day_id}/jerbs`, {
     method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(res => res.json())
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+// put /:dayId
+export const editDay = (formData) => {
+  return fetch(`${BASE_URL}${formData.day_id}`, {
+    method: 'PUT',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`,
       'Content-Type': 'application/json'
