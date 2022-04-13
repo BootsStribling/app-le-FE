@@ -4,7 +4,6 @@ import date from 'date-and-time';
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
-import DayList from './components/DayList/DayList'
 
 // ------- Pages
 import DayDetails from './pages/DayDetails/DayDetails'
@@ -76,7 +75,7 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         {/* For now routing to the first day in the index. */}
-        <Route path="/" element={<Landing user={user}/>} />
+        <Route path="/" element={<Landing user={user} days={days} />} />
         {/* Show a day */}
         <Route path="/days/:id" element={<DayDetails user={user} />} />
         {/* Create a new job */}
