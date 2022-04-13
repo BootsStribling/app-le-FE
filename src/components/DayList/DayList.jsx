@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 const DayList = (props) => {
 
   return (
-    <>
+    <div className='week'>
       {props.days
       ? props.days.map((day, idx) => <DayCard updateCurrentDay={props.updateCurrentDay} key={day.id} day={day} />)
       : <></>
       }
-    </>
+    </div>
   );
 }
  

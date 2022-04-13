@@ -38,7 +38,7 @@ const DayDetails = (props) => {
   if (!day) return <></>
 
   return (
-    <div>
+    <div className='stand'>
       {/* created_at will need to be repalced with date */}
       <p>{day.date}</p>
       {editing === 'stand_up'
@@ -49,8 +49,8 @@ const DayDetails = (props) => {
             handleEditClick={handleEditClick}
           />
         : <>        
-            <p>{day.stand_up}</p>
-            <button onClick={()=> handleEditClick('stand_up')}>Edit stand up</button>
+            <p className='stand-text'>{day.stand_up}</p>
+            <button className='stand-button' onClick={()=> handleEditClick('stand_up')}><i class="fa-solid fa-pencil"></i></button>
           </>
       }
       {editing === 'stand_down'
@@ -61,8 +61,8 @@ const DayDetails = (props) => {
             handleEditClick={handleEditClick}
           />
         : <>
-            <p>{day.stand_down}</p>
-            <button onClick={()=> handleEditClick('stand_down')}>Edit stand down</button>
+            <p className='stand-text'>{day.stand_down}</p>
+            <button className='stand-button' onClick={()=> handleEditClick('stand_down')}><i class="fa-solid fa-pencil"></i></button>
           </>
       }
       <p>Job #s:{day.jerbs?.length}</p>

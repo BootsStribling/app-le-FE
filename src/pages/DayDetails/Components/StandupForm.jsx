@@ -11,13 +11,13 @@ const StandupForm = (props) => {
   }
 
   return (
-    <>
+    <div >
       <form onSubmit={handleSubmit}>
         <textarea name={props.name} onChange={handleChange} defaultValue={props.initialValue}></textarea>
         <button type="submit">save</button>
       </form>
       <button onClick={()=> props.handleEditClick(null)}>Back</button>
-    </>
+    </div>
   );
 }
  

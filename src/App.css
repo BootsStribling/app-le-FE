@@ -1,6 +1,6 @@
 
 /** NOT MOBILE - screens larger than 414px */
-@media screen and (min-width: 414px) {
+@media screen and (min-width: 415px) {
   #root {
     position: absolute;
     height: 95vh;
@@ -63,5 +63,41 @@
 }
 /** MOBILE STYLING - screens smaller than 414px */
 @media screen and (max-width: 414px) {
-
+  .app-area{
+    height: 100vh;
+  }
+  .week {
+    display: flex;
+    justify-content: space-around;
+  }
+  .landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+  }
+  .daysq {
+    width: 50px;
+    height: 50px;
+  }
+  .stand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .stand-text {
+    margin:40px;
+  }
+  .stand-button {
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    border-radius: 100%;
+  }
+  .new-day-btn {
+    height: 40px;
+    font-size: 1.4rem;
+    margin: 40px;
+  }
 }

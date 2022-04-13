@@ -56,9 +56,6 @@ const App = () => {
 
   const createDay = () => {
     let day = new Date().toString()
-    if(days[0].date !== day ) {
-
-    }
     daysService.createDay({"date": day })
     .then(res => {
       setDays([res, ...days])
@@ -83,14 +80,8 @@ const App = () => {
         <div className='phone-overlay'>
             <div className='app-area'>
               <NavBar user={user} handleLogout={handleLogout} />
-
-
               <Routes>
-                {/* For now routing to the first day in the index. */}
                 <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
-                {/* Show a day */}
-                {/* <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} /> */}
-                {/* Create a new job */}
                 <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
                 <Route
                   path="/signup"

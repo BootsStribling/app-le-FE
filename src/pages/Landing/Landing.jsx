@@ -15,7 +15,7 @@ const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDa
         <>
           <DayList updateCurrentDay={updateCurrentDay} days={week} />
           <DayDetails updateDay={updateDay} updateCurrentDay={updateCurrentDay} currentDay={currentDay} />
-          <button onClick={createDay}>A Brand New Day</button>
+          <button className='new-day-btn' onClick={createDay}>A Brand New Day</button>
         </>
         : <></> 
       }
