@@ -28,20 +28,13 @@ const App = () => {
     let strNow = now.toString()
     let formattedNow = strNow.substring(4,15)
     setCurrentDay(formattedNow)
-    console.log(formattedNow, 'THIS IS FORMATTED NOW')
-    console.log(now.toString(), 'now')
     //then we are determining what was the last day that was created
     let lastDay = days[days.length-1]?.date
-    
-    console.log(lastDay, 'lastDay baby!', typeof lastDay)
-    console.log(days)
     if (lastDay){
       let formattedLastDay = lastDay.substring(4,15)
-      console.log(formattedLastDay)
       let desiredFormat = 'MMM DD YYYY'
       // Get the last login date and current date
       let parseLastDay = date.parse(formattedLastDay, desiredFormat)
-      console.log(parseLastDay)
       // we are subtracting current day from last day created
       let numOfMissingDays = Math.floor(date.subtract(now, parseLastDay).toDays())
       console.log(numOfMissingDays)
@@ -106,7 +99,7 @@ const App = () => {
         {/* For now routing to the first day in the index. */}
         <Route path="/" element={<Landing user={user} days={days} />} />
         {/* Show a day */}
-        <Route path="/days/:id" element={<DayDetails updateDay={updateDay} user={user} />} />
+        <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} />
         {/* Create a new job */}
         <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
         <Route
