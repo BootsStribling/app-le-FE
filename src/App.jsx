@@ -65,59 +65,15 @@ const App = () => {
 }
 
   useEffect(()=> {
-    daysService.getAllDays()
-    .then(res => {
-      setDays(res)
-      createMissingDays()
-      console.log(currentDay, 'this is states currentDay after set')
-    })
-    // .then(() => {
-    //   //checking if there are any days
-    //   // if(days){}
-    //   // on login we are determing what day it currently is with date constructor
-    //   let now = new Date()
-    //   console.log(now.toString(), 'now')
-    //   //then we are determining what was the last day that was created
-    //   let lastDay = days[days.length-1]?.date
-    //   console.log(lastDay, 'lastDay baby!', typeof lastDay)
-    //   console.log(days)
-    //   if (lastDay){
-    //     let formattedLastDay = lastDay.substring(4,15)
-    //     console.log(formattedLastDay)
-    //     let desiredFormat = 'MMM DD YYYY'
-    //     // Get the last login date and current date
-    //     let parseLastDay = date.parse(formattedLastDay, desiredFormat)
-    //     console.log(parseLastDay)
-    //     // we are subtracting current day from last day created
-    //     let numOfMissingDays = Math.floor(date.subtract(now, parseLastDay).toDays())
-    //     console.log(numOfMissingDays)
-    //     //pushing a date for number of missing days
-    //     let datesToAdd = []
-    //     for(let i = 0; i < numOfMissingDays; i++) {
-    //       let missingDay = date.addDays(now, (i * -1))
-    //       datesToAdd.push(missingDay)
-    //     }
-    //     console.log(datesToAdd);
-    //     //each date in missing days send date to create day services function
-    //     datesToAdd.reverse().forEach(date => {
-    //       console.log(date.toString(), 'date as a string')
-    //       let datePayload = date.toString()
-    //       let jsonDate = {'date': datePayload}
-    //       console.log(jsonDate, 'JSON datePayload')
-    //       daysService.createDay(jsonDate)
-    //     })
-    //     //create day services function packages date as json data
-    //     //backend receives json data and creates new day with Day model and sets
-    //     // Tue Apr 07 2022 20:27:05 GMT-0500 (Central Daylight Time) 
-    //     // let testDay = date.addDays(lastDay, -5)
-    //     // Find how many days the user has been gone
-    //     // Create all the missing Date objects
-    //     // console.log(numOfMissingDays)
-    //     // console.log(datesToAdd, 'dates to add')
-    //     // // These are the days that need to be added to the user's profile
-    //   }
-    // })
-  }, [currentDay])
+    if(user){
+      daysService.getAllDays()
+      .then(res => {
+          setDays(res)
+          createMissingDays()
+          console.log(currentDay, 'this is states currentDay after set')
+        })
+    }
+  }, [currentDay, user])
   
 
 
