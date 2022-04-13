@@ -69,7 +69,12 @@ const App = () => {
   const updateDay = (formData) => {
     console.log(formData)
     daysService.editDay(formData)
-    .then(updatedDay => setCurrentDay(updatedDay))
+    // .then(updatedDay => setCurrentDay(updatedDay))
+    .then(updatedDay => {
+      let index = days.findIndex(day => day.id === updatedDay.id)
+      days[index] = updatedDay
+      setDays([...days])
+    })
   }
 
   return (
