@@ -27,9 +27,23 @@ const App = () => {
     let now = new Date()
     let strNow = now.toString()
     let formattedNow = strNow.substring(4,15)
-    setCurrentDay(formattedNow)
     //then we are determining what was the last day that was created
     let lastDay = days[days.length-1]?.date
+    // if the user's day length is 0, it's their first login and they need a day.
+    console.log('last day', lastDay)
+    console.log('now', now)
+    if(!lastDay) {
+      console.log('FIRST TIME LOGIN. CREATE DAY AS NOW. SET CURRENT AS NOW')
+      daysService.createDay( {'date': now.toString()} )
+      .then(res => setDays([res]))
+    } else if(lastDay === now) {
+      console.log('LAST DAY AND CURRENT DAY ARE THE SAME. SET CURRENT DAY TO USERS LAST DAY. DO NOT CREATE A NEW DAY')
+    } else {
+      console.log('USER HAS DAYS BUT HAS A GAP IN THEIR DATES. SSET CURRENT DAY TO NOW. FILL IN GAPS')
+    }
+    // else user has days but has a gab in their log in.
+    setCurrentDay(formattedNow)
+
     if (lastDay){
       let formattedLastDay = lastDay.substring(4,15)
       let desiredFormat = 'MMM DD YYYY'
@@ -37,20 +51,16 @@ const App = () => {
       let parseLastDay = date.parse(formattedLastDay, desiredFormat)
       // we are subtracting current day from last day created
       let numOfMissingDays = Math.floor(date.subtract(now, parseLastDay).toDays())
-      console.log(numOfMissingDays)
       //pushing a date for number of missing days
       let datesToAdd = []
       for(let i = 0; i < numOfMissingDays; i++) {
         let missingDay = date.addDays(now, (i * -1))
         datesToAdd.push(missingDay)
       }
-      console.log(datesToAdd);
       //each date in missing days send date to create day services function
       datesToAdd.reverse().forEach(date => {
-        console.log(date.toString(), 'date as a string')
         let datePayload = date.toString()
         let jsonDate = {'date': datePayload}
-        console.log(jsonDate, 'JSON datePayload')
         daysService.createDay(jsonDate)
       })
 
@@ -63,10 +73,9 @@ const App = () => {
       .then(res => {
           setDays(res)
           createMissingDays()
-          console.log(currentDay, 'this is states currentDay after set')
         })
     }
-  }, [currentDay, user])
+  }, [user])
   
 
 
