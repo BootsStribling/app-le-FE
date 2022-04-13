@@ -6,7 +6,6 @@ const NavBar = ({ user, handleLogout }) => {
       {user ?
         <nav className='btm-nav-content'>
           <ul>
-            <li>Welcome, {user.name}</li>
             <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
           </ul>
         </nav>
