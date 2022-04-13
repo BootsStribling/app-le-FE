@@ -1,7 +1,7 @@
-import * as styles from './App.css'
+import './App.css'
 import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import date from 'date-and-time';
+import { Routes, Route, useNavigate } from 'react-router-dom'
+// import date from 'date-and-time';
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
