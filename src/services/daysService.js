@@ -1,14 +1,14 @@
 import * as tokenService from './tokenService'
 const BASE_URL=`${process.env.REACT_APP_API_URL}/api/days/`
 
-export const createDay = (formData) => {
+export const createDay = (date) => {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
-    body: JSON.stringify(formData)
+    body: JSON.stringify(date)
   })
   .then(res => res.json())
   .catch(error => console.log(error))
