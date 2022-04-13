@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDay }) => {
   const [week, setWeek] = useState([...days])
   useEffect(()=>{
-    setWeek(days.reverse().slice(0,7))
+    setWeek(days.slice(0,7))
   }, [days])
 
   return (

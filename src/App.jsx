@@ -60,7 +60,7 @@ const App = () => {
     let day = new Date().toString()
     daysService.createDay({"date": day })
     .then(res => {
-      setDays([...days, res])
+      setDays([res, ...days])
       setCurrentDay(res)
     })
   }
