@@ -25,6 +25,7 @@ export const getAllDays = () => {
   })
   .then(res => res.json()) // Res holds the days
   .then(days => {
+    console.log(days)
     // on login we are determing what day it currently is with date constructor
     let now = new Date()
     // If the user has days...

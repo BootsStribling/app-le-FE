@@ -32,6 +32,7 @@ const App = () => {
     }
   }, [user])
   
+  
   const navigate = useNavigate()
 
   const handleLogout = () => {
