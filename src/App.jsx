@@ -33,6 +33,10 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(()=> {
+    setCurrentDay(days[days.length -1])
+  }, [days])
+
   
   const navigate = useNavigate()
 
@@ -50,6 +54,8 @@ const App = () => {
     .then(updatedDay => setCurrentDay(updatedDay))
   }
 
+  const updateCurrentDay = (day) => setCurrentDay(day) 
+
   const createDay = () => {
     let day = new Date().toString()
     daysService.createDay({"date": day })
@@ -61,6 +67,7 @@ const App = () => {
 
   // Update day
   const updateDay = (formData) => {
+    console.log(formData)
     daysService.editDay(formData)
     .then(updatedDay => setCurrentDay(updatedDay))
   }
@@ -71,11 +78,12 @@ const App = () => {
             <div className='app-area'>
               <NavBar user={user} handleLogout={handleLogout} />
 
+
               <Routes>
                 {/* For now routing to the first day in the index. */}
-                <Route path="/" element={<Landing createDay={createDay} user={user} days={days} />} />
+                <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
                 {/* Show a day */}
-                <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} />
+                {/* <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} /> */}
                 {/* Create a new job */}
                 <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
                 <Route

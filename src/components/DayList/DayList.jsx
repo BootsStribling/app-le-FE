@@ -4,9 +4,8 @@ import DayCard from '../DayCard/DayCard';
 const DayList = (props) => {
   return (
     <>
-      <h1>Week grid</h1>
       {props.days
-      ? props.days.map((day, idx) => <DayCard key={day.id} day={day} day_id={day.id}/>)
+      ? props.days.map((day, idx) => <DayCard updateCurrentDay={props.updateCurrentDay} key={day.id} day={day} />)
       : <></>
       }
     </>
