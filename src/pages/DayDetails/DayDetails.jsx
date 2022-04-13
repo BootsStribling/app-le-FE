@@ -45,23 +45,29 @@ const DayDetails = (props) => {
     <div>
       {/* created_at will need to be repalced with date */}
       <p>{day.created_at}</p>
-      <p>{day.stand_up}</p>
       {editing === 'stand_up'
         ? <StandupForm 
             name= {"stand_up"} 
             updateDay={updateDay} 
             initialValue={day.stand_up} 
+            handleEditClick={handleEditClick}
           />
-        : <button onClick={()=> handleEditClick('stand_up')}>Edit stand up</button>
+        : <>        
+            <p>{day.stand_up}</p>
+            <button onClick={()=> handleEditClick('stand_up')}>Edit stand up</button>
+          </>
       }
-      <p>{day.stand_down}</p>
       {editing === 'stand_down'
         ? <StandupForm 
             name={"stand_down"} 
             updateDay={updateDay} 
-            initialValue={day.stand_down} 
+            initialValue={day.stand_down}
+            handleEditClick={handleEditClick}
           />
-        : <button onClick={()=> handleEditClick('stand_down')}>Edit stand down</button>
+        : <>
+            <p>{day.stand_down}</p>
+            <button onClick={()=> handleEditClick('stand_down')}>Edit stand down</button>
+          </>
       }
       <p>Job #s:{day.jerbs?.length}</p>
       <button onClick={navToJobForm}>APPly yoself</button>
