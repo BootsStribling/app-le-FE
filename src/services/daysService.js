@@ -11,10 +11,9 @@ export const createDay = (formData) => {
     body: JSON.stringify(formData)
   })
   .then(res => res.json())
-  .catch(error => {
-    console.log(error)
-  })
+  .catch(error => console.log(error))
 }
+
 
 export const getAllDays = () => {
   return fetch(`${BASE_URL}`, {
@@ -23,7 +22,5 @@ export const getAllDays = () => {
     }
   })
   .then(res => res.json())
-  .catch(error => {
-    console.log(error)
-  })
+  .catch(error => console.log(error))
 }
