@@ -35,7 +35,7 @@ const DayDetails = (props) => {
   const navToJobForm = () => navigate(`/days/${day.id}/jerbs`)
 
   // Display message while loading state.
-  if (!day) return <h1>Loading</h1>
+  if (!day) return <></>
 
   return (
     <div>

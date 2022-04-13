@@ -1,5 +1,4 @@
 import * as tokenService from './tokenService'
-import date from 'date-and-time';
 
 const BASE_URL=`${process.env.REACT_APP_API_URL}/api/days/`
 

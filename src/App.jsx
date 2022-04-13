@@ -1,13 +1,11 @@
 import * as styles from './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import date from 'date-and-time';
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
 
 // ------- Pages
-import DayDetails from './pages/DayDetails/DayDetails'
 import Landing from './pages/Landing/Landing'
 import JobForm from './pages/Forms/JobForm'
 import Signup from './pages/Signup/Signup'
@@ -58,6 +56,9 @@ const App = () => {
 
   const createDay = () => {
     let day = new Date().toString()
+    if(days[0].date !== day ) {
+
+    }
     daysService.createDay({"date": day })
     .then(res => {
       setDays([res, ...days])
