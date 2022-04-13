@@ -5,7 +5,7 @@ const DayList = (props) => {
     <>
       <h1>Week grid</h1>
       {props.days
-      ? props.days.map((day, idx) => <div  key={idx}><Link to={`/days/${day.id}`}>{day.created_at}</Link></div>)
+      ? props.days.map((day, idx) => <div  key={idx}><Link to={`/days/${day.id}`}>{day.date}</Link></div>)
       : <></>
       }
     </>
