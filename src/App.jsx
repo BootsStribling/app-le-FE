@@ -32,7 +32,7 @@ const App = () => {
   }, [user])
 
   useEffect(()=> {
-    setCurrentDay(days[days.length -1])
+    setCurrentDay(days[0])
   }, [days])
 
   
