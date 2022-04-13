@@ -12,8 +12,8 @@
   }
   .phone-overlay {
     position: absolute;
-    top: 5vh;
-    left: 30vw;
+    top: 7vh;
+    left: 34vw;
     background: url(../public/assets/images/Iphone-12-overlay-removebg-preview.png);
     background-size: cover;
     z-index: 1;
@@ -23,8 +23,8 @@
   /* Backgrounds to phone overlays */
   .background {
     position: absolute;
-    top: 5.5vh;
-    left: 31vw;
+    top: 7vh;
+    left: 35vw;
     width: clamp(420px, 420px, 420px);
     height: clamp(903px, 903px, 903px);
     background-color: lightblue;
@@ -43,9 +43,16 @@
   .app-area{
     margin: 12% 9% 0 9%;
   }
-  .btm-nav-content{
+  .btm-nav-content ul{
     position: absolute;
-    bottom: 2vh;
+    bottom: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btm-nav-content li{
+    display: inline;
+    margin: 10px;
   }
 }
 /** MOBILE STYLING - screens smaller than 414px */

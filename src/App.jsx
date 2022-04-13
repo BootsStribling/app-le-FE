@@ -96,7 +96,6 @@ const App = () => {
   return (
     <>
         <div className='phone-overlay'>
-          
             <div className='app-area'>
               <NavBar user={user} handleLogout={handleLogout} />
               <Routes>
