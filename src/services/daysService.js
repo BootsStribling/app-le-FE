@@ -24,3 +24,31 @@ export const getAllDays = () => {
   .then(res => res.json())
   .catch(error => console.log(error))
 }
+
+export const getOneDay = (day_id) => {
+  return fetch(`${BASE_URL}${day_id}`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }    
+  })
+  .then(res => res.json())
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+// /:day_id/jerbs
+export const createJob = (formData) => {
+  return fetch(`${BASE_URL}${formData.day_id}/jerbs`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(res => res.json())
+  .catch(error => {
+    console.log(error)
+  })
+}

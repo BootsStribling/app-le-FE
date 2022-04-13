@@ -6,10 +6,10 @@ import date from 'date-and-time';
 import NavBar from './components/NavBar/NavBar'
 import DayList from './components/DayList/DayList'
 
-
 // ------- Pages
 import DayDetails from './pages/DayDetails/DayDetails'
 import Landing from './pages/Landing/Landing'
+import JobForm from './pages/Forms/JobForm'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 
@@ -17,12 +17,13 @@ import Login from './pages/Login/Login'
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
+import DayDetails from './pages/DayDetails/DayDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [days, setDays] = useState([])
-  const [current, setCurrentDay] = useState({})
-  console.log(days)
+  const [currentDay, setCurrentDay] = useState({})
+
   useEffect(()=> {
     daysService.getAllDays()
     .then(res => setDays(res))
@@ -62,13 +63,25 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  // Add a new jerb
+  const addJerb = (formData) => {
+    daysService.createJob(formData)
+    .then(updatedDay => {
+      // Update the current day
+      setCurrentDay(updatedDay)
+    })
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         {/* For now routing to the first day in the index. */}
         <Route path="/" element={<Landing user={user}/>} />
-        <Route path="/day" element={<DayDetails user={user} day={days[0]} />}/>
+        {/* Show a day */}
+        <Route path="/days/:id" element={<DayDetails user={user} />} />
+        {/* Create a new job */}
+        <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
