@@ -15,6 +15,7 @@ import StandupEditForm from './pages/Forms/StandupEditForm'
 import StanddownEditForm from './pages/Forms/StanddownEditForm'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
+import Profile from './pages/Profile/Profile'
 
 
 // -------- Services
@@ -99,6 +100,7 @@ const App = () => {
           <NavBar user={user} handleLogout={handleLogout} />
           <Routes>
             <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
+            <Route path="/profile" element={<Profile updateCurrentDay={updateCurrentDay} user={user} />} />
             <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
             <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} currentDay={currentDay} user={user} />} />
             <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={editDay} user={user} />} />
