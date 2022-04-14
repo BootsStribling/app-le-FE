@@ -1,3 +1,14 @@
+:root{
+  --blue: rgb(0, 180, 200);
+  --green: rgb(27, 196, 55);
+  --red: rgb(216, 61, 0);
+  --brown: rgb(148, 107, 13);
+  --blue-hover: rgb(128, 190, 197);
+  --green-hover: rgb(142, 196, 151);
+  --red-hover: rgb(213, 149, 124);
+  --brown-hover:rgb(148, 133, 97);
+}
+
 .container {
   display: flex;
   flex-flow: column nowrap;
@@ -6,9 +17,52 @@
   margin-bottom: 50px;
 }
 
-.label,
-.button {
+.buttonback {
   margin-right: .5rem;
+  height: 40px;
+  width: 75px;
+  border-radius: 6px;
+  border: white 2px solid;
+  background-color: var(--red);
+  color: white;
+  transition: .15s;
+}
+
+.buttonconfirm{
+  margin-right: .5rem;
+  height: 40px;
+  width: 75px;
+  border-radius: 6px;
+  border: white 2px solid;
+  background-color: var(--green);
+  color: white;
+  transition: .5s;
+}
+
+.buttonback:hover{
+  background-color: var(--red-hover);
+  transition: .15s;
+}
+
+.buttonconfirm:hover{
+  background-color: var(--green-hover);
+  transition: .15s;
+}
+
+.buttonconfirm:disabled {
+  color: white;
+  border: white 2px dotted;
+  background-color: var(--blue);
+  transition: .8s;
+}
+
+.input {
+  height: 40px;
+  width: 200px;
+  margin: 1rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  text-align: left;
 }
 
 .inputContainer {

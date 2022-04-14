@@ -1,6 +1,13 @@
 
 /** NOT MOBILE - screens larger than 414px */
 @media screen and (min-width: 415px) {
+  :root{
+    --blue: #00B4C8;
+    --green: #1BC437;
+    --red: #D83D00;
+    --brown: #946B0D;
+  }
+  
   #root {
     position: absolute;
     height: 95vh;
@@ -9,6 +16,7 @@
     justify-content: center;
     align-items: center;
     z-index: auto;
+    
   }
   .phone-overlay {
     position: absolute;
@@ -27,7 +35,7 @@
     left: 35vw;
     width: clamp(420px, 420px, 420px);
     height: clamp(903px, 903px, 903px);
-    background-color: lightblue;
+    background-color: var(--blue);
     z-index: 0;
     border-radius: 73px;
   }
@@ -36,7 +44,7 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: greenyellow;
+    background-color: var(--green);
     border-radius: 0 0 73px 73px;
   }
   /* App Content position and Styling  */
@@ -57,7 +65,7 @@
   .daysq {
     width: 25px;
     height: 25px;
-    background-color: red;
+    background-color: var(--red);
     display: inline-block;
   }
 }
