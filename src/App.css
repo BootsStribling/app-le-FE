@@ -108,4 +108,10 @@
     flex-direction: column;
     justify-content: center;
   }
+  .text-abril{
+    font-family: 'Abril Fatface', cursive;
+  }
+  .logo {
+    font-size: 3rem;
+  }
 }
