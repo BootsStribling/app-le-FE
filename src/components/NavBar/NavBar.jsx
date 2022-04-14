@@ -12,8 +12,18 @@ const NavBar = ({ user, handleLogout }) => {
       :
         <nav className='btm-nav-content'>
           <ul>
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
+            <li>
+              <Link to="/login" className=''>
+                <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                <span>Log In</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/signup">
+                <i className="fa-solid fa-user-plus"></i>
+                <span>Sign Up</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       }
