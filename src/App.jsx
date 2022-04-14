@@ -36,6 +36,10 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(()=> {
+    setCurrentDay(days[0])
+  }, [days])
+
   const navigate = useNavigate()
 
   const handleLogout = () => {
