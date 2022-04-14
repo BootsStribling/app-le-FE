@@ -108,7 +108,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
             <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
-            <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} user={user} />} />
+            <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} currentDay={currentDay} user={user} />} />
             <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
             <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
             <Route

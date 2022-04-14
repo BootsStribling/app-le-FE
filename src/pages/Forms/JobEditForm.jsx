@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
 // The purpose of this component is to create a job in a specific day
 const JobEditForm = (props) => {
   const { day_id, jerb_id } = useParams()
   const navigate = useNavigate()
   const [form, setForm] = useState({})
+
+  // useEffect(()=> {
+  //   console.log('cd', props.currentDay)
+  //   let jerb = props.currentDay.jerbs.find(j => j.id === jerb_id)
+  //   console.log(jerb)
+  // }, [])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
