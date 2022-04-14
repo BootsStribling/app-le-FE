@@ -21,25 +21,20 @@
 
 .sansation {
   font-family: sansation;
+  font-size: 1.8rem;
 }
 
 .slim{
   font-family: slim;
 }
 
-.weekcontainer {
+.container {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
-}
-
-.daydetailscontainer{
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 5vh;
 }
 
 .buttonback {
@@ -77,7 +72,7 @@
 .buttonconfirm:disabled {
   color: white;
   border: white 2px dotted;
-  background-color: var(--blue);
+  background-color: white;
   transition: .8s;
 }
 
@@ -90,7 +85,64 @@
   text-align: left;
 }
 
+.textarea{
+  height: 300px;
+  width: 300px;
+  font-family: sansation;
+  font-size: 1.3rem;
+}
+
 .inputContainer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vh;
   margin-bottom: 1rem;
 }
 
+.stand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  justify-content: center;
+}
+.standtext {
+  margin: 0 40px;
+  font-family: slim;
+  font-size: 1.4rem;
+  height: 200px;
+  width: 300px;
+  overflow: scroll;
+  text-align: center;
+}
+.standheader {
+  display: flex;
+}
+.newstandbutton {
+  border: none;
+  background: transparent;
+  font-size: 3rem;
+  color: green;
+}
+.standeditbutton {
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  width: 45px;
+  font-size: 1rem;
+}
+
+.standform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fadollarsign {
+  color: green;
+}
+.jobarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

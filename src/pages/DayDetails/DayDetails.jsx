@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import styles from './DayDetails.module.css'
 
 // The purpose of this function is to show the details of a single day.
 // (This is Landing in our wireframe)
@@ -26,38 +27,51 @@ const DayDetails = (props) => {
 
   return (
     <>
-      <div className='stand'>
+      <div className={styles.stand}>
         {/* Stand up */}
-        <div className='stand-header'>
-          <h2>Stand up</h2>
+        <div className={styles.standheader}>
+          <h2 className={styles.sansation}>Stand up</h2>
           {day.stand_up 
-            ? <button className='stand-edit-button' onClick={navToStandUpEditForm}><i className="fa-solid fa-pencil"></i></button>
+            ? <button className={styles.standeditbutton} onClick={navToStandUpEditForm}><i className="fa-solid fa-pencil"></i></button>
             : <></>
           }
         </div>
         {day.stand_up
           ? <></>
-          : <button className='new-stand-btn' onClick={navToStandUp}>+</button>
+          : <button className={styles.newstandbutton} onClick={navToStandUp}>+</button>
         }
-        <p className='stand-text'>{day.stand_up}</p>
+        <p className={styles.standtext}>{day.stand_up}</p>
 
         {/* Stand down */}
-        <div className='stand-header'>
-          <h2>Stand down</h2>
+        <div className={styles.standheader}>
+          <h2 className={styles.sansation}>Stand down</h2>
           {day.stand_down
-            ? <button className='stand-edit-button' onClick={navToStandDownEditForm}><i className="fa-solid fa-pencil"></i></button>
+            ? <button className={styles.standeditbutton} onClick={navToStandDownEditForm}><i className="fa-solid fa-pencil"></i></button>
             : <></>
           }
         </div>
         {day.stand_down
           ? <></>
-          : <button className='new-stand-btn' onClick={navToStandDown}>+</button>
+          : <button className={styles.newstandbutton} onClick={navToStandDown}>+</button>
         }
-        <p className='stand-text'>{day.stand_down}</p>
+        <p className={styles.standtext}>{day.stand_down}</p>
       </div>
-      <div className='job-area'>
-        {day.jerbs?.map((j, idx) => <button key={idx} onClick={()=> navToJobEditForm(j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
-        <button onClick={navToJobForm}>APPly yoself</button>
+      <div className={styles.jobarea}>
+        {day.jerbs?.map((j, idx) => 
+          <button 
+            key={idx} 
+            onClick={()=> navToJobEditForm(j.id)}
+            className={styles.fadollarsign}
+            >
+            <i className="fa-solid fa-dollar-sign"></i>
+          </button>
+        )}
+        <button
+          className={styles.buttonconfirm}
+          onClick={navToJobForm}
+        >
+          APP-ly to Job
+        </button>
       </div>
     </>
   );
