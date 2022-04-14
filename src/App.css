@@ -103,4 +103,9 @@
     font-size: 1.4rem;
     margin: 40px;
   }
+  .stand-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

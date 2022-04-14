@@ -20,17 +20,17 @@ const StanddownForm = (props) => {
 
 
   return (
-    <>
-      <h1>Stand Down</h1>
-      <p>you deserve a rest</p>
-      <section>
-        <form onSubmit={handleSubmit} >
+    <div>
+      <div className='stand-form'>
+        <h1>Stand Down</h1>
+        <p>you deserve a rest</p>
+        <form className='stand-form' onSubmit={handleSubmit} >
           <textarea name="stand_down" type="text" onChange={handleChange} />
           <button type="submit">Submit</button>
         </form>
-      </section>
+      </div>
       <button onClick={backtoLanding}>Back</button>
-    </>
+    </div>
   );
 }
  

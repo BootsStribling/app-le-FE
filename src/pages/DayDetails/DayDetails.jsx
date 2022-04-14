@@ -36,7 +36,7 @@ const DayDetails = (props) => {
         ? <></>
         : <button onClick={navToStandUp}>+</button>
       }
-      
+      <p className='stand-text'>{day.stand_up}</p>
       {/* Stand down */}
       <div className='stand-header'>
         <h2>Stand down</h2>
@@ -45,7 +45,6 @@ const DayDetails = (props) => {
           : <></>
         }
       </div>
-      <p className='stand-text'>{day.stand_up}</p>
       {day.stand_down
         ? <></>
         : <button onClick={navToStandDown}>+</button>
