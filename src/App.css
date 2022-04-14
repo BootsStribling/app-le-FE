@@ -194,6 +194,11 @@
     overflow: hidden;
   }
 
+  .top-nav-content {
+    position: relative;
+    top: 0;
+  }
+
   .btm-nav-content ul{
     position: absolute;
     bottom: 3vh;

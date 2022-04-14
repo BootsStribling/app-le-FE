@@ -4,7 +4,7 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <>
       {user ?
-        <nav className='btm-nav-content'>
+        <nav className='top-nav-content'>
           <ul>
             <li>
               <Link className='link' to="" onClick={handleLogout}>
