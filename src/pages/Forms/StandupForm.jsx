@@ -22,16 +22,24 @@ const StandupForm = (props) => {
 
   return (
     <>
-      <div>
-        <h1>Stand up</h1>
-        <p>and seize the day</p>
+      <div className={styles.container}>
+        <h1 className={styles.sansation}>Stand Up</h1>
+        <p className={styles.slim}>Seize the Day!</p>
         <section>
           <form onSubmit={handleSubmit} >
-            <textarea name="stand_up" type="text" onChange={handleChange} />
-            <button type="submit">Submit</button>
+            <textarea
+              className={styles.textarea}
+              placeholder='Tell us what you are working on today!'
+              name="stand_up"
+              type="text" 
+              onChange={handleChange} 
+            />
+            <div className={styles.inputContainer}>
+              <button className={styles.buttonconfirm} type="submit">Submit</button>
+              <button className={styles.buttonback} onClick={backtoLanding}>Back</button>
+            </div>
           </form>
         </section>
-        <button onClick={backtoLanding}>Back</button>
       </div>
     </>
   );

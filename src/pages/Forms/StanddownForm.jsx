@@ -23,8 +23,8 @@ const StanddownForm = (props) => {
   return (
     <div>
       <div className={styles.container}>
-        <h1 classname={styles.sansation}>Stand Down</h1>
-        <p className={styles.slim}>You deserve a rest!</p>
+        <h1 className={styles.sansation}>Stand Down</h1>
+        <p className={styles.slim}>You Deserve a Rest!</p>
         <form className='stand-form' onSubmit={handleSubmit} >
           <textarea 
             className={styles.textarea}
