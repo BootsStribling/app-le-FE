@@ -15,6 +15,7 @@ const DayDetails = (props) => {
   // Nav to forms
   const navigate = useNavigate()
   const navToJobForm = () => navigate(`/days/${day.id}/jerbs`)
+  const navToJobEditForm = (jerb_id) => navigate(`/days/${day.id}/jerbs/${jerb_id}`)
   const navToStandDown = () => navigate(`/days/${day.id}/stand_down`)
   const navToStandUp = () => navigate(`/days/${day.id}/stand_up`)
 
@@ -53,7 +54,7 @@ const DayDetails = (props) => {
         <p className='stand-text'>{day.stand_down}</p>
       </div>
       <div className='job-area'>
-        <p>{day.jerbs?.map(j => <Link to={j.id}><i class="fa-solid fa-dollar-sign"></i></Link>)}</p>
+        {day.jerbs?.map((j, idx) => <button key={idx} onClick={()=> navToJobEditForm(j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
         <button onClick={navToJobForm}>APPly yoself</button>
       </div>
     </>
