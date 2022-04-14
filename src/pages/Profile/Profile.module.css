@@ -1,0 +1,14 @@
+.daysFlex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  margin: 15px auto;
+}
+
+.jobsFlex {
+  width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}

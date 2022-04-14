@@ -1,7 +1,8 @@
+import styles from './Profile.module.css'
 import { useEffect, useState } from 'react'
 import { getAllDays } from '../../services/daysService'
-import DayList from '../../components/DayList/DayList'
 import { useNavigate } from 'react-router-dom'
+import DayList from '../../components/DayList/DayList'
 const Profile = (props) => {
 
   const [days, setDays] = useState([])
@@ -23,8 +24,13 @@ const Profile = (props) => {
 
   return (
     <>
-      <DayList updateCurrentDay={props.updateCurrentDay} days={days} />
-      <div className='job-area'>
+      <div className={styles.daysFlex}>
+        <DayList updateCurrentDay={props.updateCurrentDay} days={days} />
+      </div>
+      <h1>{jerbs.length} Applications over {days.length} days!</h1>
+      <div className={styles.jobsFlex}>
+        {jerbs.map((j, idx) => <button key={idx} onClick={()=> navToJobEditForm(j.day_id, j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
+        {jerbs.map((j, idx) => <button key={idx} onClick={()=> navToJobEditForm(j.day_id, j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
         {jerbs.map((j, idx) => <button key={idx} onClick={()=> navToJobEditForm(j.day_id, j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
       </div>
     </>
