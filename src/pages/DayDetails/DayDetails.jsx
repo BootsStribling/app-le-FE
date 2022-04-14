@@ -26,6 +26,7 @@ const DayDetails = (props) => {
 
   return (
     <>
+      <h1 className='date-heading'>{day ? day.date?.substring(4,15) : "..."}</h1>
       <div className='stand'>
         {/* Stand up */}
         <div className='stand-header'>
