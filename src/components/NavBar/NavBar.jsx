@@ -10,7 +10,7 @@ const NavBar = ({ user, handleLogout }) => {
           </ul>
         </nav>
       :
-        <nav>
+        <nav className='btm-nav-content'>
           <ul>
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>

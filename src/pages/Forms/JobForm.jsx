@@ -25,9 +25,15 @@ const JobForm = (props) => {
       <section>
         <form onSubmit={handleSubmit} >
           <label htmlFor="title">Title:</label>
-          <input name="title" type="text" onChange={handleChange} />
+          <input 
+            name="title" 
+            type="text" 
+            onChange={handleChange} />
           <label htmlFor="company">Company:</label>
-          <input name="company" type="text" onChange={handleChange} />
+          <input 
+          name="company" 
+          type="text" 
+          onChange={handleChange} />
           <button type="submit">Submit</button>
         </form>
       </section>
