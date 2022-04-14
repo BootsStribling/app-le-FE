@@ -18,7 +18,7 @@ const DayCard = (props) => {
   }, [props.day])
 
   return (
-    <button className={colorClass} onClick={()=> props.updateCurrentDay(props.day)}></button>
+    <button className={colorClass} onClick={()=> props.updateCurrentDay(props.day)}>{props.day.date.substring(4,10)}</button>
   );
 }
  

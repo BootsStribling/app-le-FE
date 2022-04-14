@@ -13,9 +13,14 @@ const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDa
     <main className="landing">
       {user ? 
         <>
-          <DayList updateCurrentDay={updateCurrentDay} days={week} />
-          <DayDetails updateDay={updateDay} updateCurrentDay={updateCurrentDay} currentDay={currentDay} />
-          <button className='new-day-btn' onClick={createDay}>A Brand New Day</button>
+          <div>
+            <DayList updateCurrentDay={updateCurrentDay} days={week} />
+            <h1 className='date-heading'>{currentDay?.date?.substring(4,15)}</h1>
+          </div>
+          <div>
+            <DayDetails updateDay={updateDay} updateCurrentDay={updateCurrentDay} currentDay={currentDay} />
+            <button className='new-day-btn' onClick={createDay}>A Brand New Day</button>
+          </div>
         </>
         : 
         <>

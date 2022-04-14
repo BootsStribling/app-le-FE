@@ -4,10 +4,13 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
+import StanddownForm from './pages/Forms/StanddownForm'
+import StandupForm from './pages/Forms/StandupForm'
 
 // ------- Pages
 import Landing from './pages/Landing/Landing'
 import JobForm from './pages/Forms/JobForm'
+import JobEditForm from './pages/Forms/JobEditForm'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 
@@ -15,8 +18,6 @@ import Login from './pages/Login/Login'
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
-import StanddownForm from './pages/Forms/StanddownForm'
-import StandupForm from './pages/Forms/StandupForm'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -56,6 +57,11 @@ const App = () => {
   // Add a new jerb
   const addJerb = (formData) => {
     daysService.createJob(formData)
+    .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
+  }
+
+  const editJerb = (formData) => {
+    daysService.editJerb(formData)
     .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
   }
 
@@ -102,6 +108,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
             <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
+            <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} currentDay={currentDay} user={user} />} />
             <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
             <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
             <Route

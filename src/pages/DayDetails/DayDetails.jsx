@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,6 +15,7 @@ const DayDetails = (props) => {
   // Nav to forms
   const navigate = useNavigate()
   const navToJobForm = () => navigate(`/days/${day.id}/jerbs`)
+  const navToJobEditForm = (jerb_id) => navigate(`/days/${day.id}/jerbs/${jerb_id}`)
   const navToStandDown = () => navigate(`/days/${day.id}/stand_down`)
   const navToStandUp = () => navigate(`/days/${day.id}/stand_up`)
 
@@ -21,39 +23,41 @@ const DayDetails = (props) => {
   if (!day) return <></>
 
   return (
-    <div className='stand'>
-      <p>{day.date}</p>
-
-      {/* Stand up */}
-      <div className='stand-header'>
-        <h2>Stand up</h2>
-        {day.stand_up 
-          ? <button className='stand-edit-button' onClick={navToStandUp}><i className="fa-solid fa-pencil"></i></button>
-          : <></>
+    <>
+      <div className='stand'>
+        {/* Stand up */}
+        <div className='stand-header'>
+          <h2>Stand up</h2>
+          {day.stand_up 
+            ? <button className='stand-edit-button' onClick={navToStandUp}><i className="fa-solid fa-pencil"></i></button>
+            : <></>
+          }
+        </div>
+        {day.stand_up
+          ? <></>
+          : <button className='new-stand-btn' onClick={navToStandUp}>+</button>
         }
-      </div>
-      {day.stand_up
-        ? <></>
-        : <button onClick={navToStandUp}>+</button>
-      }
-      <p className='stand-text'>{day.stand_up}</p>
-      {/* Stand down */}
-      <div className='stand-header'>
-        <h2>Stand down</h2>
+        <p className='stand-text'>{day.stand_up}</p>
+
+        {/* Stand down */}
+        <div className='stand-header'>
+          <h2>Stand down</h2>
+          {day.stand_down
+            ? <button className='stand-edit-button' onClick={navToStandDown}><i className="fa-solid fa-pencil"></i></button>
+            : <></>
+          }
+        </div>
         {day.stand_down
-          ? <button className='stand-edit-button' onClick={navToStandDown}><i className="fa-solid fa-pencil"></i></button>
-          : <></>
+          ? <></>
+          : <button className='new-stand-btn' onClick={navToStandDown}>+</button>
         }
+        <p className='stand-text'>{day.stand_down}</p>
       </div>
-      {day.stand_down
-        ? <></>
-        : <button onClick={navToStandDown}>+</button>
-      }
-      <p className='stand-text'>{day.stand_down}</p>
-
-      <p>Job #s:{day.jerbs?.length}</p>
-      <button onClick={navToJobForm}>APPly yoself</button>
-    </div>
+      <div className='job-area'>
+        {day.jerbs?.map((j, idx) => <button key={idx} onClick={()=> navToJobEditForm(j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
+        <button onClick={navToJobForm}>APPly yoself</button>
+      </div>
+    </>
   );
 }
  
