@@ -30,8 +30,6 @@ const Profile = (props) => {
       <h2 className={styles.message}>{jerbs.length} Applications over {days.length} days!</h2>
       <div className={styles.jobsFlex}>
         {jerbs.map((j, idx) => <button className={styles.fadollarsign} key={idx} onClick={()=> navToJobEditForm(j.day_id, j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
-        {jerbs.map((j, idx) => <button className={styles.fadollarsign} key={idx} onClick={()=> navToJobEditForm(j.day_id, j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
-        {jerbs.map((j, idx) => <button className={styles.fadollarsign} key={idx} onClick={()=> navToJobEditForm(j.day_id, j.id)}><i className="fa-solid fa-dollar-sign"></i></button>)}
       </div>
       <div className={styles.btnContainer}>
         <button className={styles.backBtn} onClick={()=> navigate("/")}>Back</button>
