@@ -1,6 +1,9 @@
 import { useState,useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import styles from './Forms.module.css'
 import { getOneDay } from '../../services/daysService'
+
+
 // The purpose of this component is to create a job in a specific day
 const JobEditForm = (props) => {
   const { day_id, jerb_id } = useParams()
@@ -31,25 +34,30 @@ const JobEditForm = (props) => {
 
   return (
     <>
-      <h1>Edit job</h1>
-      <section>
-        <form onSubmit={handleSubmit} >
-          <label htmlFor="title">Title:</label>
-          <input 
-            name="title" 
-            type="text"
-            defaultValue={form.title} 
-            onChange={handleChange} />
-          <label htmlFor="company">Company:</label>
-          <input 
-          name="company" 
-          type="text"
-          defaultValue={form.company} 
-          onChange={handleChange} />
-          <button type="submit">Submit</button>
-        </form>
-      </section>
-      <button onClick={backtoLanding}>Back</button>
+      <div className={styles.container}>
+        <h1 className={styles.sansation}>Edit job</h1>
+        <section>
+          <form className={styles.container} onSubmit={handleSubmit} >
+            <input
+              className={styles.input}
+              defaultValue={form.title} 
+              name="title" 
+              type="text" 
+              onChange={handleChange} />
+            <input
+              className={styles.input}
+              defaultValue={form.company} 
+              name="Company" 
+              type="text" 
+              onChange={handleChange}
+            />
+            <div className={styles.inputContainer}>
+              <button className={styles.buttonconfirm}type="submit">Submit</button>
+              <button className={styles.buttonback}onClick={backtoLanding}>Back</button>
+            </div>
+          </form>
+        </section>
+      </div>
     </>
   );
 }
