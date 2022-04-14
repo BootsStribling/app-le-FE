@@ -7,6 +7,16 @@
     --red: #D83D00;
     --brown: #946B0D;
   }
+
+  @font-face{
+    font-family: sansation;
+    src: url(../public/assets/fonts/Sansation_Bold.ttf)
+  }
+
+  @font-face {
+    font-family: slim;
+    src: url(../public/assets/fonts/BodyGrotesque-SlimLight.ttf);
+  }
   
   #root {
     position: absolute;
@@ -71,6 +81,16 @@
 }
 /** MOBILE STYLING - screens smaller than 414px */
 @media screen and (max-width: 414px) {
+  @font-face{
+    font-family: sansation;
+    src: url(../public/assets/fonts/Sansation_Bold.ttf)
+  }
+
+  @font-face {
+    font-family: slim;
+    src: url(../public/assets/fonts/BodyGrotesque-SlimLight.ttf);
+  }
+  
   .app-area{
     height: 100vh;
   }
@@ -88,6 +108,15 @@
   .btm-nav-content li{
     display: inline;
     margin: 0;
+  }
+  .link{
+    text-decoration: none;
+  }
+  .nav-span {
+    margin-left: 8px;
+    font-size: 1.3rem;
+    font-family: slim;
+    font-weight: bold;
   }
 
   .week {

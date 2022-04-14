@@ -11,9 +11,9 @@ const LoginPage = props => {
 
   return (
     <main className={styles.container}>
-      <h1 className='text-abril logo'>APPle_a_day</h1>
-      <h2>Log In</h2>
-      <p>{message}</p>
+      <h1 className={styles.sansation}>APP-le</h1>
+      <h2 className={styles.slim}>Log In</h2>
+      <p className={styles.slim}>{message}</p>
       <LoginForm
         handleSignupOrLogin={props.handleSignupOrLogin}
         updateMessage={updateMessage}
