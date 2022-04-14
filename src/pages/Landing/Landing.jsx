@@ -17,7 +17,14 @@ const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDa
           <DayDetails updateDay={updateDay} updateCurrentDay={updateCurrentDay} currentDay={currentDay} />
           <button className='new-day-btn' onClick={createDay}>A Brand New Day</button>
         </>
-        : <></> 
+        : 
+        <>
+          <div className={styles.container}>
+            <div>
+              <img src="../../../assets/images/logo-text.png" alt="APP-le A Day Logo" />
+            </div>
+          </div>
+        </> 
       }
     </main>
   )
