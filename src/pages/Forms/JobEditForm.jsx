@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import styles from './Forms.module.css'
-
+import { getOneDay } from '../../services/daysService'
 
 
 // The purpose of this component is to create a job in a specific day
@@ -10,11 +10,14 @@ const JobEditForm = (props) => {
   const navigate = useNavigate()
   const [form, setForm] = useState({})
 
-  // useEffect(()=> {
-  //   console.log('cd', props.currentDay)
-  //   let jerb = props.currentDay.jerbs.find(j => j.id === jerb_id)
-  //   console.log(jerb)
-  // }, [])
+  useEffect(()=> {
+    getOneDay(day_id)
+    .then(response => {
+      let day = response.day
+      let jerb = day.jerbs.find(j => j.id === parseInt(jerb_id))
+      setForm( {"company":jerb.company, "title":jerb.title})
+    })
+  }, [])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
@@ -37,13 +40,13 @@ const JobEditForm = (props) => {
           <form className={styles.container} onSubmit={handleSubmit} >
             <input
               className={styles.input}
-              placeholder='Title'
+              defaultValue={form.title} 
               name="title" 
               type="text" 
               onChange={handleChange} />
             <input
               className={styles.input}
-              placeholder='company'
+              defaultValue={form.company} 
               name="Company" 
               type="text" 
               onChange={handleChange}
