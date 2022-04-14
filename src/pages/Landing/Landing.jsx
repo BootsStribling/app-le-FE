@@ -14,7 +14,9 @@ const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDa
       {user ? 
         <>
           <div>
-            <DayList updateCurrentDay={updateCurrentDay} days={week} />
+            <div className='week'>
+              <DayList updateCurrentDay={updateCurrentDay} days={week} />
+            </div>
             <h1 className='date-heading'>{currentDay?.date?.substring(4,15)}</h1>
           </div>
           <div>
