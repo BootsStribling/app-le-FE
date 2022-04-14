@@ -1,13 +1,11 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-// import date from 'date-and-time';
 
 // ------- Components
 import NavBar from './components/NavBar/NavBar'
 
 // ------- Pages
-import DayDetails from './pages/DayDetails/DayDetails'
 import Landing from './pages/Landing/Landing'
 import JobForm from './pages/Forms/JobForm'
 import Signup from './pages/Signup/Signup'
@@ -17,6 +15,8 @@ import Login from './pages/Login/Login'
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
+import StanddownForm from './pages/Forms/StanddownForm'
+import StandupForm from './pages/Forms/StandupForm'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -27,19 +27,22 @@ const App = () => {
     if(user){
       daysService.getAllDays()
       .then(res => {
-        console.log('RECIEVED', res)
         setDays(res)
       })
     }
   }, [user])
-  
+
+  useEffect(()=> {
+    setCurrentDay(days[0])
+  }, [days])
+
   
   const navigate = useNavigate()
 
   const handleLogout = () => {
     authService.logout()
     setUser(null)
-    navigate('/')
+    navigate('/login')
   }
 
   const handleSignupOrLogin = () => setUser(authService.getUser())
@@ -50,10 +53,39 @@ const App = () => {
     .then(updatedDay => setCurrentDay(updatedDay))
   }
 
-  // Update day
-  const updateDay = (formData) => {
+  const addStandUp = (formData) => {
+    console.log(formData)
     daysService.editDay(formData)
     .then(updatedDay => setCurrentDay(updatedDay))
+  }
+
+  const addStandDown = (formData) => {
+    console.log(formData)
+    daysService.editDay(formData)
+    .then(updatedDay => setCurrentDay(updatedDay))
+  }
+
+  const updateCurrentDay = (day) => setCurrentDay(day) 
+
+  const createDay = () => {
+    let day = new Date().toString()
+    daysService.createDay({"date": day })
+    .then(res => {
+      setDays([res, ...days])
+      setCurrentDay(res)
+    })
+  }
+
+  // Update day
+  const updateDay = (formData) => {
+    console.log(formData)
+    daysService.editDay(formData)
+    // .then(updatedDay => setCurrentDay(updatedDay))
+    .then(updatedDay => {
+      let index = days.findIndex(day => day.id === updatedDay.id)
+      days[index] = updatedDay
+      setDays([...days])
+    })
   }
 
   return (
@@ -62,12 +94,10 @@ const App = () => {
             <div className='app-area'>
               <NavBar user={user} handleLogout={handleLogout} />
               <Routes>
-                {/* For now routing to the first day in the index. */}
-                <Route path="/" element={<Landing user={user} days={days} />} />
-                {/* Show a day */}
-                <Route path="/days/:id" element={<DayDetails updateDay={updateDay} key={currentDay} user={user} />} />
-                {/* Create a new job */}
+                <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
                 <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
+                <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
+                <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
                 <Route
                   path="/signup"
                   element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 // The purpose of this component is to create a job in a specific day
-const JobForm = (props) => {
+const StanddownForm = (props) => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [form, setForm] = useState({})
@@ -14,26 +14,24 @@ const JobForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     form["day_id"] = id
-    props.addJerb(form)
+    props.addStandDown(form)
     backtoLanding()
   }
 
 
   return (
-    <>
-      <h1>Add a job</h1>
-      <section>
-        <form onSubmit={handleSubmit} >
-          <label htmlFor="title">Title:</label>
-          <input name="title" type="text" onChange={handleChange} />
-          <label htmlFor="company">Company:</label>
-          <input name="company" type="text" onChange={handleChange} />
+    <div>
+      <div className='stand-form'>
+        <h1>Stand Down</h1>
+        <p>you deserve a rest</p>
+        <form className='stand-form' onSubmit={handleSubmit} >
+          <textarea name="stand_down" type="text" onChange={handleChange} />
           <button type="submit">Submit</button>
         </form>
-      </section>
+      </div>
       <button onClick={backtoLanding}>Back</button>
-    </>
+    </div>
   );
 }
  
-export default JobForm;
+export default StanddownForm;
