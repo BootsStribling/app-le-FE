@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './DayDetails.module.css'
@@ -27,10 +26,10 @@ const DayDetails = (props) => {
 
   return (
     <>
-      <h1 className='date-heading'>{day ? day.date?.substring(4,15) : "..."}</h1>
-      <div className={styles.stand}>
+      <h1 className={styles.heading}>{day ? day.date?.substring(4,15) : "..."}</h1>
 
-        {/* Stand up */}
+      {/* Stand up */}
+      <div className={styles.standupContainer}>
         <div className={styles.standheader}>
           <h2 className={styles.sansation}>Stand up</h2>
           {day.stand_up 
@@ -38,13 +37,16 @@ const DayDetails = (props) => {
             : <></>
           }
         </div>
-        {day.stand_up
-          ? <></>
-          : <button className={styles.newstandbutton} onClick={navToStandUp}>+</button>
-        }
-        <p className={styles.standtext}>{day.stand_up}</p>
+        <div className={styles.standHeight}>
+          {day.stand_up
+            ? <p className={styles.standtext}>{day.stand_up}</p>
+            : <button className={styles.newstandbutton} onClick={navToStandUp}>+</button>
+          }
+        </div>
+      </div>
 
-        {/* Stand down */}
+      {/* Stand down */}
+      <div className={styles.standupContainer}>
         <div className={styles.standheader}>
           <h2 className={styles.sansation}>Stand down</h2>
           {day.stand_down
@@ -52,12 +54,14 @@ const DayDetails = (props) => {
             : <></>
           }
         </div>
-        {day.stand_down
-          ? <></>
-          : <button className={styles.newstandbutton} onClick={navToStandDown}>+</button>
-        }
-        <p className={styles.standtext}>{day.stand_down}</p>
+        <div className={styles.standHeight}>
+          {day.stand_down
+            ? <p className={styles.standtext}>{day.stand_down}</p>
+            : <button className={styles.newstandbutton} onClick={navToStandDown}>+</button>
+          }
+        </div>
       </div>
+
       <div className={styles.jobarea}>
         {day.jerbs?.map((j, idx) => 
           <button 
@@ -68,13 +72,13 @@ const DayDetails = (props) => {
             <i className="fa-solid fa-dollar-sign"></i>
           </button>
         )}
-        <button
-          className={styles.buttonconfirm}
-          onClick={navToJobForm}
-        >
-          APP-ly to Job
-        </button>
       </div>
+      <button
+        className={styles.buttonconfirm}
+        onClick={navToJobForm}
+      >
+        APP-ly to Job
+      </button>
     </>
   );
 }

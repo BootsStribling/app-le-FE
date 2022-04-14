@@ -5,15 +5,13 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {user ?
         <nav className='top-nav-content'>
-          <ul>
-            <li>
+
               <Link className='link' to="" onClick={handleLogout}>
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span className='nav-span'>Log Out</span>
               </Link>
               <img src={`https://ui-avatars.com/api/?background=random&rounded=true&name=${user.name}`} alt="avatar" />
-            </li>
-          </ul>
+
         </nav>
       :
         <nav className='btm-nav-content'>

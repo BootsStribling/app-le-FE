@@ -196,7 +196,10 @@
 
   .top-nav-content {
     position: relative;
-    top: 0;
+    margin: 5px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 
   .btm-nav-content ul{
