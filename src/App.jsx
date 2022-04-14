@@ -36,7 +36,6 @@ const App = () => {
     setCurrentDay(days[0])
   }, [days])
 
-  
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -47,22 +46,29 @@ const App = () => {
 
   const handleSignupOrLogin = () => setUser(authService.getUser())
 
+  const updateDaysInStateAfterFormSubmit = (updatedDay) => {
+    let index = days.findIndex(day => day.id === updatedDay.id)
+    days[index] = updatedDay
+    setCurrentDay(updatedDay)
+    setDays([...days])
+  }
+
   // Add a new jerb
   const addJerb = (formData) => {
     daysService.createJob(formData)
-    .then(updatedDay => setCurrentDay(updatedDay))
+    .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
   }
 
   const addStandUp = (formData) => {
     console.log(formData)
     daysService.editDay(formData)
-    .then(updatedDay => setCurrentDay(updatedDay))
+    .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
   }
 
   const addStandDown = (formData) => {
     console.log(formData)
     daysService.editDay(formData)
-    .then(updatedDay => setCurrentDay(updatedDay))
+    .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
   }
 
   const updateCurrentDay = (day) => setCurrentDay(day) 
@@ -90,28 +96,28 @@ const App = () => {
 
   return (
     <>
-        <div className='phone-overlay'>
-            <div className='app-area'>
-              <NavBar user={user} handleLogout={handleLogout} />
-              <Routes>
-                <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
-                <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
-                <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
-                <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
-                <Route
-                  path="/signup"
-                  element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-                  />
-                <Route
-                  path="/login"
-                  element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-                  />
-              </Routes>
-            </div>
+      <div className='phone-overlay'>
+        <div className='app-area'>
+          <NavBar user={user} handleLogout={handleLogout} />
+          <Routes>
+            <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
+            <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
+            <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
+            <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
+            <Route
+              path="/signup"
+              element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+              />
+            <Route
+              path="/login"
+              element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+              />
+          </Routes>
         </div>
-        <div className='background'>
-          <div className='btm-nav'></div>
-        </div>
+      </div>
+      <div className='background'>
+        <div className='btm-nav'></div>
+      </div>
     </>
   )
 }

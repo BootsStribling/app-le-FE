@@ -7,7 +7,7 @@ const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDa
   const [week, setWeek] = useState([...days])
   useEffect(()=>{
     setWeek(days.slice(0,7))
-  }, [days])
+  }, [days, currentDay])
 
   return (
     <main className="landing">
