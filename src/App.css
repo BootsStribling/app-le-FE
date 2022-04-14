@@ -93,31 +93,35 @@
   .week {
     display: flex;
     justify-content: space-around;
+    margin: 10px 5px;
   }
   .landing {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     height: 100vh;
   }
   .daysq {
+    border-radius: 10%;
     width: 50px;
     height: 50px;
     border: none;
   }
   .daysq_1 {
+    border-radius: 10%;
     width: 50px;
     height: 50px;
     background-color: #FCD2D1;
     border: none;
   }
   .daysq_2 {
+    border-radius: 10%;
     width: 50px;
     height: 50px;
     background-color: #FE8F8F;
     border: none;
   }
   .daysq_3 {
+    border-radius: 10%;
     width: 50px;
     height: 50px;
     background-color: #FF5C58;
@@ -127,12 +131,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 60vh;
+    justify-content: space-around;
   }
   .stand-text {
     margin: 0 40px;
   }
   .stand-header {
     display: flex;
+  }
+  .new-stand-btn {
+    border: none;
+    background: transparent;
+    font-size: 3rem;
+    color: green;
   }
   .stand-edit-button {
     margin: 10px;
@@ -156,5 +168,16 @@
   }
   .logo {
     font-size: 3rem;
+  }
+  .date-heading {
+    text-align: center;
+  }
+  .fa-dollar-sign {
+    color: green;
+  }
+  .job-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
