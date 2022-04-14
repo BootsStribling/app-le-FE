@@ -6,22 +6,27 @@ const NavBar = ({ user, handleLogout }) => {
       {user ?
         <nav className='btm-nav-content'>
           <ul>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
+            <li>
+              <Link className='link' to="" onClick={handleLogout}>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span className='nav-span'>Log Out</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       :
         <nav className='btm-nav-content'>
           <ul>
             <li>
-              <Link to="/login" className=''>
+              <Link to="/login" className='link'>
                 <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                <span>Log In</span>
+                <span className='nav-span'>Log In</span>
               </Link>
             </li>
             <li>
-              <Link to="/signup">
+              <Link to="/signup" className='link'>
                 <i className="fa-solid fa-user-plus"></i>
-                <span>Sign Up</span>
+                <span className='nav-span'>Sign Up</span>
               </Link>
             </li>
           </ul>

@@ -1,5 +1,27 @@
+@font-face {
+  font-family: sansation;
+  src: url(../../../public/assets/fonts/Sansation_Bold.ttf);
+}
+
+@font-face {
+  font-family: slim;
+  src: url(../../../public/assets/fonts/BodyGrotesque-SlimLight.ttf);
+}
+
 .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  margin-top: 10vh;
+}
+
+.sansation {
+  font-family: sansation;
+  font-size: 3.0rem;
+  margin-bottom: 0;
+}
+
+.slim {
+  font-family: slim;
 }

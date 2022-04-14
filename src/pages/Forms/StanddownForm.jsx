@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import styles from './Forms.module.css'
 
 // The purpose of this component is to create a job in a specific day
 const StanddownForm = (props) => {
@@ -21,15 +22,24 @@ const StanddownForm = (props) => {
 
   return (
     <div>
-      <div className='stand-form'>
-        <h1>Stand Down</h1>
-        <p>you deserve a rest</p>
+      <div className={styles.container}>
+        <h1 classname={styles.sansation}>Stand Down</h1>
+        <p className={styles.slim}>You deserve a rest!</p>
         <form className='stand-form' onSubmit={handleSubmit} >
-          <textarea name="stand_down" type="text" onChange={handleChange} />
-          <button type="submit">Submit</button>
+          <textarea 
+            className={styles.textarea}
+            placeholder="Tell us what you learned and/or accomplished today!"
+            name="stand_down" 
+            type="text" 
+            onChange={handleChange} 
+          />
+          
+          <div className={styles.inputContainer}>
+            <button className={styles.buttonconfirm} type="submit">Submit</button>
+            <button className= {styles.buttonback} onClick={backtoLanding}>Back</button>
+          </div>
         </form>
       </div>
-      <button onClick={backtoLanding}>Back</button>
     </div>
   );
 }

@@ -54,9 +54,6 @@ const LoginForm = props => {
       />
       <div>
         <button className={styles.buttonconfirm}>Log In</button>
-        <Link to="/">
-          <button className={styles.buttonback}>Cancel</button>
-        </Link>
       </div>
     </form>
   )
