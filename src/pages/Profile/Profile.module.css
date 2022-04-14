@@ -1,8 +1,11 @@
 .daysFlex {
-  display: flex;
-  flex-wrap: wrap;
-  width: 350px;
+  display: grid;
+  grid-template-columns: repeat(7, 50px);
+  width: 370px;
+  gap: 3px;
   margin: 15px auto;
+  height: 215px;
+  overflow: scroll;
 }
 
 .jobsFlex {
@@ -11,4 +14,33 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.fadollarsign {
+  color: green;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 50%;
+  font-size: 1.3rem;
+}
+.btnContainer {
+  text-align: center;
+}
+.backBtn {
+  margin: 40px;
+  height: 40px;
+  width: 75px;
+  border-radius: 6px;
+  border: white 2px solid;
+  background-color: var(--red);
+  color: white;
+  transition: .15s;
+}
+
+.message {
+  text-align: center;
+  font-family: sansation;
+  margin: 30px;
 }

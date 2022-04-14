@@ -10,7 +10,9 @@ const NavBar = ({ user, handleLogout }) => {
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span className='nav-span'>Log Out</span>
               </Link>
-              <img src={`https://ui-avatars.com/api/?background=random&rounded=true&name=${user.name}`} alt="avatar" />
+              <Link to="/profile">
+                <img src={`https://ui-avatars.com/api/?background=random&rounded=true&name=${user.name}`} alt="avatar" />
+              </Link>
 
         </nav>
       :
