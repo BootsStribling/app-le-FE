@@ -52,7 +52,7 @@
 .buttonconfirm:disabled {
   color: white;
   border: white 2px dotted;
-  background-color: var(--blue);
+  background-color: lightgray;
   transition: .8s;
 }
 

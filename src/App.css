@@ -45,7 +45,6 @@
     left: 35vw;
     width: clamp(420px, 420px, 420px);
     height: clamp(903px, 903px, 903px);
-    background-color: var(--blue);
     z-index: 0;
     border-radius: 73px;
   }
@@ -54,29 +53,126 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: var(--green);
     border-radius: 0 0 73px 73px;
   }
   /* App Content position and Styling  */
   .app-area{
     margin: 12% 9% 0 9%;
   }
+
   .btm-nav-content ul{
     position: absolute;
     bottom: 3vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    width: 385px;
+    margin-bottom: 5vh;
+    padding: 0;
   }
+
   .btm-nav-content li{
     display: inline;
-    margin: 10px;
+    margin: 0;
+  }
+
+  .link{
+    text-decoration: none;
+  }
+
+  .nav-span {
+    margin-left: 8px;
+    font-size: 1.3rem;
+    font-family: slim;
+    font-weight: bold;
+  }
+
+  .week {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 5px;
+  }
+  .landing {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
   }
   .daysq {
-    width: 25px;
-    height: 25px;
-    background-color: var(--red);
-    display: inline-block;
+    border-radius: 10%;
+    width: 50px;
+    height: 50px;
+    border: none;
+  }
+  .daysq_1 {
+    border-radius: 10%;
+    width: 50px;
+    height: 50px;
+    background-color: #FCD2D1;
+    border: none;
+  }
+  .daysq_2 {
+    border-radius: 10%;
+    width: 50px;
+    height: 50px;
+    background-color: #FE8F8F;
+    border: none;
+  }
+  .daysq_3 {
+    border-radius: 10%;
+    width: 50px;
+    height: 50px;
+    background-color: #FF5C58;
+    border: none;
+  }
+  .stand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+    justify-content: space-around;
+  }
+  .stand-text {
+    margin: 0 40px;
+  }
+  .stand-header {
+    display: flex;
+  }
+  .new-stand-btn {
+    border: none;
+    background: transparent;
+    font-size: 3rem;
+    color: green;
+  }
+  .stand-edit-button {
+    margin: 10px;
+    background-color: transparent;
+    border: none;
+    width: 45px;
+    font-size: 1rem;
+  }
+  .new-day-btn {
+    height: 40px;
+    font-size: 1.4rem;
+    margin: 40px;
+  }
+  .stand-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .logo {
+    font-size: 3rem;
+  }
+  .date-heading {
+    text-align: center;
+  }
+  .fa-dollar-sign {
+    color: green;
+  }
+  .job-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 /** MOBILE STYLING - screens smaller than 414px */
@@ -191,9 +287,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  .text-abril{
-    font-family: 'Abril Fatface', cursive;
   }
   .logo {
     font-size: 3rem;
