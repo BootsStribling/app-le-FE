@@ -22,21 +22,36 @@ const DayDetails = (props) => {
 
   return (
     <div className='stand'>
-      {/* created_at will need to be repalced with date */}
       <p>{day.date}</p>
-      <h2>Stand up</h2>
+
+      {/* Stand up */}
+      <div className='stand-header'>
+        <h2>Stand up</h2>
+        {day.stand_up 
+          ? <button className='stand-edit-button' onClick={navToStandUp}><i className="fa-solid fa-pencil"></i></button>
+          : <></>
+        }
+      </div>
       {day.stand_up
-        ? <button className='stand-button' onClick={navToStandUp}><i className="fa-solid fa-pencil"></i></button>
+        ? <></>
         : <button onClick={navToStandUp}>+</button>
       }
+      
+      {/* Stand down */}
+      <div className='stand-header'>
+        <h2>Stand down</h2>
+        {day.stand_down
+          ? <button className='stand-edit-button' onClick={navToStandDown}><i className="fa-solid fa-pencil"></i></button>
+          : <></>
+        }
+      </div>
       <p className='stand-text'>{day.stand_up}</p>
-      <h2>Stand down</h2>
       {day.stand_down
-        ? <button className='stand-button' onClick={navToStandDown}><i className="fa-solid fa-pencil"></i></button>
+        ? <></>
         : <button onClick={navToStandDown}>+</button>
       }
       <p className='stand-text'>{day.stand_down}</p>
-      
+
       <p>Job #s:{day.jerbs?.length}</p>
       <button onClick={navToJobForm}>APPly yoself</button>
     </div>
