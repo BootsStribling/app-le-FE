@@ -104,26 +104,28 @@
     width: 50px;
     height: 50px;
     border: none;
+    background-color: #FE8F8F;
+
   }
   .daysq_1 {
     border-radius: 10%;
     width: 50px;
     height: 50px;
-    background-color: #FCD2D1;
+    background-color: #ACFFAD;
     border: none;
   }
   .daysq_2 {
     border-radius: 10%;
     width: 50px;
     height: 50px;
-    background-color: #FE8F8F;
+    background-color: #71EFA3;
     border: none;
   }
   .daysq_3 {
     border-radius: 10%;
     width: 50px;
     height: 50px;
-    background-color: #FF5C58;
+    background-color: #50CB93;
     border: none;
   }
   .stand {
@@ -242,26 +244,27 @@
     height: 50px;
     border: none;
     margin: 1px;
+    background-color: #FE8F8F;
   }
   .daysq_1 {
     border-radius: 10%;
     width: 50px;
     height: 50px;
-    background-color: #FCD2D1;
+    background-color: #ACFFAD;
     border: none;
   }
   .daysq_2 {
     border-radius: 10%;
     width: 50px;
     height: 50px;
-    background-color: #FE8F8F;
+    background-color: #71EFA3;
     border: none;
   }
   .daysq_3 {
     border-radius: 10%;
     width: 50px;
     height: 50px;
-    background-color: #FF5C58;
+    background-color: #50CB93;
     border: none;
   }  
   .logo {

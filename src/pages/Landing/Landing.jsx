@@ -24,9 +24,7 @@ const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDa
         : 
         <>
           <div className={styles.container}>
-            <div>
-              <img src="../../../assets/images/logo-text.png" alt="APP-le A Day Logo" />
-            </div>
+            <img className={styles.logo} src="../../../assets/images/logo-text.png" alt="APP-le A Day Logo" />
           </div>
         </> 
       }
