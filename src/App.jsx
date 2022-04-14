@@ -11,6 +11,8 @@ import StandupForm from './pages/Forms/StandupForm'
 import Landing from './pages/Landing/Landing'
 import JobForm from './pages/Forms/JobForm'
 import JobEditForm from './pages/Forms/JobEditForm'
+import StandupEditForm from './pages/Forms/StandupEditForm'
+import StanddownEditForm from './pages/Forms/StanddownEditForm'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 
@@ -32,10 +34,6 @@ const App = () => {
       })
     }
   }, [user])
-
-  useEffect(()=> {
-    setCurrentDay(days[0])
-  }, [days])
 
   const navigate = useNavigate()
 
@@ -65,13 +63,7 @@ const App = () => {
     .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
   }
 
-  const addStandUp = (formData) => {
-    console.log(formData)
-    daysService.editDay(formData)
-    .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
-  }
-
-  const addStandDown = (formData) => {
+  const editDay = (formData) => {
     console.log(formData)
     daysService.editDay(formData)
     .then(updatedDay => updateDaysInStateAfterFormSubmit(updatedDay))
@@ -109,8 +101,10 @@ const App = () => {
             <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
             <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
             <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} currentDay={currentDay} user={user} />} />
-            <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={addStandDown} user={user} />} />
-            <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={addStandUp} user={user} />} />
+            <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={editDay} user={user} />} />
+            <Route path="/days/:id/stand_up" element={<StandupForm addStandUp={editDay} user={user} />} />
+            <Route path="/days/:id/stand_down/edit" element={<StanddownEditForm editStandDown={editDay} user={user} />} />
+            <Route path="/days/:id/stand_up/edit" element={<StandupEditForm editStandUp={editDay} user={user} />} />
             <Route
               path="/signup"
               element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
