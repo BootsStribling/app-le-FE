@@ -53,7 +53,6 @@ export const createJob = (formData) => {
   })
 }
 
-// put /:dayId
 export const editDay = (formData) => {
   return fetch(`${BASE_URL}${formData.day_id}`, {
     method: 'PUT',

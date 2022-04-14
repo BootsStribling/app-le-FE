@@ -16,6 +16,8 @@ const DayDetails = (props) => {
   const navigate = useNavigate()
   const navToJobForm = () => navigate(`/days/${day.id}/jerbs`)
   const navToJobEditForm = (jerb_id) => navigate(`/days/${day.id}/jerbs/${jerb_id}`)
+  const navToStandUpEditForm = (jerb_id) => navigate(`/days/${day.id}/stand_up/edit`)
+  const navToStandDownEditForm = (jerb_id) => navigate(`/days/${day.id}/stand_down/edit`)
   const navToStandDown = () => navigate(`/days/${day.id}/stand_down`)
   const navToStandUp = () => navigate(`/days/${day.id}/stand_up`)
 
@@ -29,7 +31,7 @@ const DayDetails = (props) => {
         <div className='stand-header'>
           <h2>Stand up</h2>
           {day.stand_up 
-            ? <button className='stand-edit-button' onClick={navToStandUp}><i className="fa-solid fa-pencil"></i></button>
+            ? <button className='stand-edit-button' onClick={navToStandUpEditForm}><i className="fa-solid fa-pencil"></i></button>
             : <></>
           }
         </div>
@@ -43,7 +45,7 @@ const DayDetails = (props) => {
         <div className='stand-header'>
           <h2>Stand down</h2>
           {day.stand_down
-            ? <button className='stand-edit-button' onClick={navToStandDown}><i className="fa-solid fa-pencil"></i></button>
+            ? <button className='stand-edit-button' onClick={navToStandDownEditForm}><i className="fa-solid fa-pencil"></i></button>
             : <></>
           }
         </div>
