@@ -15,7 +15,7 @@ const StanddownForm = (props) => {
       let day = response.day
       setForm( {"stand_down":day.stand_down} )
     })
-  }, [])
+  }, [id])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 

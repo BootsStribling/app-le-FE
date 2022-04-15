@@ -17,7 +17,7 @@ const JobEditForm = (props) => {
       let jerb = day.jerbs.find(j => j.id === parseInt(jerb_id))
       setForm( {"company":jerb.company, "title":jerb.title})
     })
-  }, [])
+  }, [day_id, jerb_id])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 

@@ -15,7 +15,7 @@ const StandupEditForm = (props) => {
       let day = response.day
       setForm( {"stand_up":day.stand_up} )
     })
-  }, [])
+  }, [id])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 

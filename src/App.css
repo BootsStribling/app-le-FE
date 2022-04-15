@@ -62,6 +62,14 @@
     overflow: hidden;
   }
 
+  .top-nav-content {
+    position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   .btm-nav-content ul{
     position: absolute;
     bottom: 3vh;
@@ -81,7 +89,6 @@
   .link{
     text-decoration: none;
   }
-
   .nav-span {
     margin-left: 8px;
     font-size: 1.3rem;
@@ -91,21 +98,21 @@
 
   .week {
     display: flex;
-    justify-content: center;
-    margin: 0;
+    justify-content: space-around;
+    margin: 10px 5px;
   }
   .landing {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 840px;
   }
   .daysq {
     border-radius: 10%;
     width: 50px;
     height: 50px;
     border: none;
+    margin: 1px;
     background-color: #FE8F8F;
-
   }
   .daysq_1 {
     border-radius: 10%;
@@ -127,56 +134,12 @@
     height: 50px;
     background-color: #50CB93;
     border: none;
-  }
-  .stand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 60vh;
-    justify-content: space-around;
-  }
-  .stand-text {
-    margin: 0 40px;
-  }
-  .stand-header {
-    display: flex;
-  }
-  .new-stand-btn {
-    border: none;
-    background: transparent;
-    font-size: 3rem;
-    color: green;
-  }
-  .stand-edit-button {
-    margin: 10px;
-    background-color: transparent;
-    border: none;
-    width: 45px;
-    font-size: 1rem;
-  }
-  .new-day-btn {
-    height: 40px;
-    font-size: 1.4rem;
-    margin: 40px;
-  }
-  .stand-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+  }  
   .logo {
     font-size: 3rem;
   }
   .date-heading {
     text-align: center;
-  }
-  .fa-dollar-sign {
-    color: green;
-  }
-  .job-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 /** MOBILE STYLING - screens smaller than 414px */
