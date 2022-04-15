@@ -2,16 +2,16 @@
 1) Track your projects and job applications.
 2) Hold yourself accountable.
 3) PROFIT. 📈 💰 🤑
-
 # [💸 CLICK HERE FOR GAINS 💸](https://app-le-a-day.netlify.app)
 # 🤸🏿‍♀️ 📦 Out of the box AGILE mentality 📦 🧠
+![Agile Mentality](https://i.imgur.com/JSQqQ9o.png)
 ## 🧍 Stand Up 🙌
 Start the day by writing your goals and project idea.
 ## 🪑 Stand Down 🧘
 Then write what you learned and what you hope to accomplish next!
 ## 💵 Remember Applications💰
-Reach your daily job application goals and never forget where you applied.
-
+Reach your daily job application goals and never forget where you applied.  
+![Login](https://i.imgur.com/5zRzxqr.png)
 ---
 
 ## 👨‍💻 Technologies  👨‍🔬
