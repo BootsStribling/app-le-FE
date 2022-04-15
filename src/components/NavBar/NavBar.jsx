@@ -7,7 +7,7 @@ const NavBar = ({ user, handleLogout }) => {
         <nav className='top-nav-content'>
 
               <Link className='link' to="" onClick={handleLogout}>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
                 <span className='nav-span'>Log Out</span>
               </Link>
               <Link to="/profile">

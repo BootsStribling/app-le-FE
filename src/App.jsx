@@ -21,12 +21,12 @@ import Profile from './pages/Profile/Profile'
 // -------- Services
 import * as authService from './services/authService'
 import * as daysService from './services/daysService'
+import Welcome from './pages/Welcome/Welcome'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [days, setDays] = useState([])
   const [currentDay, setCurrentDay] = useState([])
-
   useEffect(()=> {
     if(user){
       daysService.getAllDays()
@@ -105,6 +105,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
             <Route path="/profile" element={<Profile updateCurrentDay={updateCurrentDay} user={user} />} />
+            <Route path="/welcome" element={<Welcome user={user} />} />
             <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
             <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} currentDay={currentDay} user={user} />} />
             <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={editDay} user={user} />} />
@@ -114,11 +115,11 @@ const App = () => {
             <Route
               path="/signup"
               element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-              />
+            />
             <Route
               path="/login"
               element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-              />
+            />
           </Routes>
         </div>
       </div>
