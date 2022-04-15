@@ -1,39 +1,45 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import lottie from "lottie-web"
 import lottie0 from './lotties/developer_02_solid.json'
 import lottie1 from './lotties/developer_01_solid.json'
 import lottie2 from './lotties/message sent_03_solid.json'
 import lottie3 from './lotties/product launch_01_solid.json'
+import styles from './Welcome.module.css'
 
-const Welcome = () => {
+const Welcome = (props) => {
   const panels = [
     {
       "lottie" : lottie0,
-      "messageA" : "Welcome",
-      "messageB" : "Welcome",
+      "messageA" : "Set your Daily Goals in Stand Ups",
     },
     {
       "lottie" : lottie1,
-      "messageA" : "Welcome",
-      "messageB" : "Welcome",
+      "messageA" : "Write what you Achieved in Stand Downs",
     },
     {
       "lottie" : lottie2,
-      "messageA" : "Welcome",
-      "messageB" : "Welcome",
+      "messageA" : "Track Job Applications\n",
     },
     {
       "lottie" : lottie3,
-      "messageA" : "Welcome",
-      "messageB" : "Welcome",
+      "messageA" : "Launch your Dev Career\n",
     },
   ]
 
   const [panelState, setPanelState] = useState(0)
+  const navigate = useNavigate()
   const handleButtonClick = () => {
     if(panelState < panels.length - 1) setPanelState(panelState + 1)
-    else console.log('redirect to landing')
+    else {
+      props.toggleNav()
+      navigate('/')
+    }
   }
+
+  useEffect(()=> {
+    props.toggleNav()
+  }, [])
 
   useEffect(()=> {
     lottie.loadAnimation({
@@ -46,12 +52,15 @@ const Welcome = () => {
   }, [panelState])
 
   return (
-    <>
-      <h1>{panels[panelState].messageA}</h1>
+    <div className={styles.container}>
+      <h1 className={styles.message}>{panels[panelState].messageA}</h1>
       <div key={panelState} id="lottie" />
-      <h1>{panels[panelState].messageB}</h1>
-      <button onClick={handleButtonClick}>nexrt</button>
-    </>
+      {panelState < panels.length - 1
+        ? <button className={styles.btn} onClick={handleButtonClick}><i class="fa-solid fa-arrow-right"></i></button>
+        : <button className={styles.lastBtn} onClick={handleButtonClick}>Onward and Upward!</button>
+      }
+      
+    </div>
   );
 }
  
