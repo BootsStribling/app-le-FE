@@ -27,6 +27,8 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [days, setDays] = useState([])
   const [currentDay, setCurrentDay] = useState([])
+  const [showNav, setShowNav] = useState(true)
+  // nav state
   useEffect(()=> {
     if(user){
       daysService.getAllDays()
@@ -41,6 +43,8 @@ const App = () => {
   }, [days])
 
   const navigate = useNavigate()
+  
+  const toggleNav = () => setShowNav(!showNav)
 
   const handleLogout = () => {
     authService.logout()
@@ -101,11 +105,15 @@ const App = () => {
     <>
       <div className='phone-overlay'>
         <div className='app-area'>
-          <NavBar user={user} handleLogout={handleLogout} />
+          {/* Wrap in condition if nav state is true */}
+          {showNav
+            ? <NavBar user={user} handleLogout={handleLogout} />
+            : <></>
+          }
           <Routes>
             <Route path="/" element={<Landing updateDay={updateDay} currentDay={currentDay} updateCurrentDay={updateCurrentDay} createDay={createDay} user={user} days={days} />} />
             <Route path="/profile" element={<Profile updateCurrentDay={updateCurrentDay} user={user} />} />
-            <Route path="/welcome" element={<Welcome user={user} />} />
+            <Route path="/welcome" element={<Welcome toggleNav={toggleNav} user={user} />} />
             <Route path="/days/:id/jerbs" element={<JobForm addJerb={addJerb} user={user} />} />
             <Route path="/days/:day_id/jerbs/:jerb_id" element={<JobEditForm editJerb={editJerb} currentDay={currentDay} user={user} />} />
             <Route path="/days/:id/stand_down" element={<StanddownForm addStandDown={editDay} user={user} />} />

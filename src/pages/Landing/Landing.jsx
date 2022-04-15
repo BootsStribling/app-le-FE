@@ -3,7 +3,7 @@ import DayList from '../../components/DayList/DayList'
 import DayDetails from '../DayDetails/DayDetails'
 import { useEffect, useState } from 'react'
 // The purpose of this landing is to set the current date and sho
-const Landing = ({ user, days, createDay, updateCurrentDay, currentDay, updateDay }) => {
+const Landing = ({ toggleNav, user, days, createDay, updateCurrentDay, currentDay, updateDay }) => {
   const [week, setWeek] = useState([...days])
   useEffect(()=>{
     setWeek(days.slice(0,7))

@@ -18,10 +18,9 @@
 }
 
 .fadollarsign {
-  color: green;
+  color: #1BC437;
   background: transparent;
-  border: 1px solid;
-  border-radius: 50%;
+  border: none;
   font-size: 1.3rem;
 }
 .btnContainer {

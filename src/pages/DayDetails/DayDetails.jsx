@@ -31,7 +31,7 @@ const DayDetails = (props) => {
       {/* Stand up */}
       <div className={styles.standupContainer}>
         <div className={styles.standheader}>
-          <h2 className={styles.sansation}>Stand up</h2>
+          <h2 className={styles.sansation}>Stand Up</h2>
           {day.stand_up 
             ? <button className={styles.standeditbutton} onClick={navToStandUpEditForm}><i className="fa-solid fa-pencil"></i></button>
             : <></>
@@ -48,7 +48,7 @@ const DayDetails = (props) => {
       {/* Stand down */}
       <div className={styles.standupContainer}>
         <div className={styles.standheader}>
-          <h2 className={styles.sansation}>Stand down</h2>
+          <h2 className={styles.sansation}>Stand Down</h2>
           {day.stand_down
             ? <button className={styles.standeditbutton} onClick={navToStandDownEditForm}><i className="fa-solid fa-pencil"></i></button>
             : <></>
@@ -69,7 +69,7 @@ const DayDetails = (props) => {
             onClick={()=> navToJobEditForm(j.id)}
             className={styles.fadollarsign}
             >
-            <i className="fa-solid fa-dollar-sign"></i>
+            <i className="fa-solid fa-sack-dollar"></i>
           </button>
         )}
       </div>

@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 1000px;
+  align-items: center;
+  text-align: center;
+  font-family: sansation;
+}
+
+.message {
+  width: 350px;
+}
+
+.btn {
+  padding: 100px;
+  margin: 100px;
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.lastBtn {
+  margin: 200px;
+  background-color: #1BC437;
+  color: white;
+  border: none;
+  height: 60px;
+  border-radius: 10px;
+  width: 90%;
+  font-size: 2rem;
+}
