@@ -27,7 +27,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [days, setDays] = useState([])
   const [currentDay, setCurrentDay] = useState([])
-
   useEffect(()=> {
     if(user){
       daysService.getAllDays()
@@ -116,11 +115,11 @@ const App = () => {
             <Route
               path="/signup"
               element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-              />
+            />
             <Route
               path="/login"
               element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-              />
+            />
           </Routes>
         </div>
       </div>
